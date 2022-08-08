@@ -1,0 +1,16 @@
+Backend: Vivado
+Board: pynq-z2
+ClockPeriod: 5
+HLSConfig:
+  Model:
+    Precision: ap_fixed<16,4>
+    ReuseFactor: 1
+    Strategy: Resource
+IOType: io_stream
+InputData: null
+KerasModel: !keras_model 'custom_qkeras_combined_no_axi_rf/keras_model.h5'
+OutputDir: custom_qkeras_combined_no_axi_rf
+OutputPredictions: null
+ProjectName: myproject
+Stamp: 6fdF56d1
+XilinxPart: xcku115-flvb2104-2-i

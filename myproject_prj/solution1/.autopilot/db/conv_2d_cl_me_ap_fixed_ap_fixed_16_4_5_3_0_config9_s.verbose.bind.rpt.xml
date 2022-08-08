@@ -1,0 +1,114 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'conv_2d_cl_me_ap_fixed_ap_fixed_16_4_5_3_0_config9_s'" level="0">
+<item name = "Date">Fri Aug  5 17:06:41 2022
+</item>
+<item name = "Version">2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)</item>
+<item name = "Project">myproject_prj</item>
+<item name = "Solution">solution1</item>
+<item name = "Product family">kintexu</item>
+<item name = "Target device">xcku115-flvb2104-2-i</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">5.00 ns, 4.290 ns, 0.62 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">267615, 397954, 1.338 ms, 1.990 ms, 267615, 397954, none</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+<column name="grp_cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config9_s_fu_2129">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config9_s, 889, 889, 4.445 us, 4.445 us, 889, 889, none</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2264">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2270">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2276">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2282">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2288">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2294">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2300">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2306">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2312">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2318">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2324">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2330">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2336">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2342">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2348">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2354">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2360">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2366">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2372">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2378">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2384">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2390">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2396">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2402">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2408">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2414">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2420">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2426">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2432">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2438">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2444">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2450">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2456">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2462">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2468">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2474">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2480">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2486">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2492">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2498">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2504">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2510">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2516">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2522">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2528">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2534">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2540">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2546">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2552">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2558">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2564">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2570">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2576">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2582">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2588">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2594">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2600">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2606">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2612">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2618">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2624">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2630">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2636">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+<column name="grp_product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s_fu_2642">product_dense_ap_fixed_ap_fixed_ap_fixed_16_4_5_3_0_s, 1, 1, 5.000 ns, 5.000 ns, 1, 1, function</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+<column name="- Loop 1">267614, 397953, 926 ~ 1377, -, -, 289, no</column>
+<column name=" + Loop 1.1">32, 32, 1, -, -, 32, no</column>
+<column name=" + Loop 1.2">290, 290, 4, 1, 1, 288, yes</column>
+<column name=" + CastLoop">128, 128, 2, -, -, 64, no</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+</profile>

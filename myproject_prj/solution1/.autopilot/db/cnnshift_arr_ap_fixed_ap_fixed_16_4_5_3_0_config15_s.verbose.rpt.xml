@@ -1,0 +1,231 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s'" level="0">
+<item name = "Date">Fri Aug  5 17:07:11 2022
+</item>
+<item name = "Version">2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)</item>
+<item name = "Project">myproject_prj</item>
+<item name = "Solution">solution1</item>
+<item name = "Product family">kintexu</item>
+<item name = "Target device">xcku115-flvb2104-2-i</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">5.00 ns, 3.542 ns, 0.62 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">715, 715, 3.575 us, 3.575 us, 715, 715, none</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+<column name="- Loop 1">192, 192, 3, -, -, 64, no</column>
+<column name="- Loop 2">260, 260, 130, -, -, 2, no</column>
+<column name=" + Loop 2.1">128, 128, 2, -, -, 64, no</column>
+<column name="- Loop 3">260, 260, 130, -, -, 2, no</column>
+<column name=" + Loop 3.1">128, 128, 2, -, -, 64, no</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="6">Name, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
+<column name="DSP">-, -, -, -, -</column>
+<column name="Expression">-, -, 0, 186, -</column>
+<column name="FIFO">-, -, -, -, -</column>
+<column name="Instance">-, -, -, -, -</column>
+<column name="Memory">1, -, 0, 512, 0</column>
+<column name="Multiplexer">-, -, -, 440, -</column>
+<column name="Register">-, -, 97, -, -</column>
+<specialColumn name="Available SLR">2160, 2760, 663360, 331680, 0</specialColumn>
+<specialColumn name="Utilization SLR (%)">~0, 0, ~0, ~0, 100</specialColumn>
+<specialColumn name="Available">4320, 5520, 1326720, 663360, 0</specialColumn>
+<specialColumn name="Utilization (%)">~0, 0, ~0, ~0, 0</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="7">Instance, Module, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
+</table>
+</item>
+<item name = "DSP48E"><table name="" hasTotal="0">
+<keys size="3">Instance, Module, Expression</keys>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="10">Memory, Module, BRAM_18K, FF, LUT, URAM, Words, Bits, Banks, W*Bits*Banks</keys>
+<column name="layer_in_row_Array_V_4_0_0_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_1_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_2_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_3_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_4_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_5_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_6_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_7_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_8_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_9_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_10_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_11_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_12_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_13_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_14_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_15_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_16_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_17_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_18_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_19_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_20_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_21_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_22_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_23_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_24_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_25_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_26_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_27_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_28_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_29_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_30_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_31_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_32_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_33_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_34_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_35_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_36_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_37_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_38_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_39_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_40_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_41_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_42_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_43_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_44_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_45_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_46_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_47_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_48_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_49_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_50_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_51_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_52_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_53_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_54_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_55_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_56_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_57_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_58_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_59_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_60_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_61_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_62_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="layer_in_row_Array_V_4_0_63_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_layeffY, 0, 0, 8, 0, 13, 16, 1, 208</column>
+<column name="tmpinput_V_U">cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config15_s_tmpigh9, 1, 0, 0, 0, 128, 16, 1, 2048</column>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="8">Name, BRAM_18K, FF, LUT, URAM, Depth, Bits, Size:D*B</keys>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+<column name="add_ln124_fu_1362_p2">+, 0, 0, 9, 2, 1</column>
+<column name="add_ln125_fu_1400_p2">+, 0, 0, 15, 7, 1</column>
+<column name="add_ln126_fu_1406_p2">+, 0, 0, 16, 9, 9</column>
+<column name="add_ln134_fu_1490_p2">+, 0, 0, 16, 9, 9</column>
+<column name="add_ln203_fu_1495_p2">+, 0, 0, 16, 9, 9</column>
+<column name="i0_fu_689_p2">+, 0, 0, 15, 7, 1</column>
+<column name="i1_fu_1434_p2">+, 0, 0, 9, 2, 1</column>
+<column name="i2_fu_1484_p2">+, 0, 0, 15, 7, 1</column>
+<column name="icmp_ln124_fu_1356_p2">icmp, 0, 0, 9, 2, 3</column>
+<column name="icmp_ln125_fu_1394_p2">icmp, 0, 0, 11, 7, 8</column>
+<column name="icmp_ln131_fu_1428_p2">icmp, 0, 0, 9, 2, 3</column>
+<column name="icmp_ln133_fu_1478_p2">icmp, 0, 0, 11, 7, 8</column>
+<column name="icmp_ln151_fu_683_p2">icmp, 0, 0, 11, 7, 8</column>
+<column name="or_ln126_fu_1380_p2">or, 0, 0, 8, 8, 7</column>
+<column name="or_ln134_fu_1452_p2">or, 0, 0, 8, 8, 7</column>
+<column name="xor_ln203_fu_701_p2">xor, 0, 0, 8, 7, 8</column>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+<column name="DataOut_V_0_reg_504">273, 64, 16, 1024</column>
+<column name="ap_NS_fsm">50, 11, 1, 11</column>
+<column name="i0_0_reg_492">9, 2, 7, 14</column>
+<column name="i11_0_i_reg_661">9, 2, 2, 4</column>
+<column name="i1_0_i_0_reg_638">9, 2, 2, 4</column>
+<column name="i22_0_i_reg_672">9, 2, 7, 14</column>
+<column name="i2_0_i_0_reg_649">9, 2, 7, 14</column>
+<column name="output_V_address0">21, 4, 8, 32</column>
+<column name="output_V_d0">15, 3, 16, 48</column>
+<column name="tmpinput_V_address0">21, 4, 7, 28</column>
+<column name="tmpinput_V_d0">15, 3, 16, 48</column>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+<column name="DataOut_V_0_reg_504">16, 0, 16, 0</column>
+<column name="add_ln124_reg_1853">2, 0, 2, 0</column>
+<column name="add_ln125_reg_1871">7, 0, 7, 0</column>
+<column name="add_ln134_reg_1907">9, 0, 9, 0</column>
+<column name="ap_CS_fsm">10, 0, 10, 0</column>
+<column name="i0_0_reg_492">7, 0, 7, 0</column>
+<column name="i0_reg_1512">7, 0, 7, 0</column>
+<column name="i11_0_i_reg_661">2, 0, 2, 0</column>
+<column name="i1_0_i_0_reg_638">2, 0, 2, 0</column>
+<column name="i1_reg_1884">2, 0, 2, 0</column>
+<column name="i22_0_i_reg_672">7, 0, 7, 0</column>
+<column name="i2_0_i_0_reg_649">7, 0, 7, 0</column>
+<column name="i2_reg_1902">7, 0, 7, 0</column>
+<column name="tmpinput_V_addr_12_reg_1517">7, 0, 7, 0</column>
+<column name="trunc_ln126_reg_1858">1, 0, 1, 0</column>
+<column name="zext_ln126_16_reg_1863">1, 0, 9, 8</column>
+<column name="zext_ln133_2_reg_1894">2, 0, 9, 7</column>
+<column name="zext_ln134_7_reg_1889">1, 0, 9, 8</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="ap_clk">in, 1, ap_ctrl_hs, cnnshift_arr&lt;ap_fixed,ap_fixed&lt;16,4,5,3,0&gt;,config15&gt;, return value</column>
+<column name="ap_rst">in, 1, ap_ctrl_hs, cnnshift_arr&lt;ap_fixed,ap_fixed&lt;16,4,5,3,0&gt;,config15&gt;, return value</column>
+<column name="ap_start">in, 1, ap_ctrl_hs, cnnshift_arr&lt;ap_fixed,ap_fixed&lt;16,4,5,3,0&gt;,config15&gt;, return value</column>
+<column name="ap_done">out, 1, ap_ctrl_hs, cnnshift_arr&lt;ap_fixed,ap_fixed&lt;16,4,5,3,0&gt;,config15&gt;, return value</column>
+<column name="ap_idle">out, 1, ap_ctrl_hs, cnnshift_arr&lt;ap_fixed,ap_fixed&lt;16,4,5,3,0&gt;,config15&gt;, return value</column>
+<column name="ap_ready">out, 1, ap_ctrl_hs, cnnshift_arr&lt;ap_fixed,ap_fixed&lt;16,4,5,3,0&gt;,config15&gt;, return value</column>
+<column name="data_V_address0">out, 6, ap_memory, data_V, array</column>
+<column name="data_V_ce0">out, 1, ap_memory, data_V, array</column>
+<column name="data_V_q0">in, 16, ap_memory, data_V, array</column>
+<column name="output_V_address0">out, 8, ap_memory, output_V, array</column>
+<column name="output_V_ce0">out, 1, ap_memory, output_V, array</column>
+<column name="output_V_we0">out, 1, ap_memory, output_V, array</column>
+<column name="output_V_d0">out, 16, ap_memory, output_V, array</column>
+<column name="output_V_q0">in, 16, ap_memory, output_V, array</column>
+</table>
+</item>
+</section>
+</profile>

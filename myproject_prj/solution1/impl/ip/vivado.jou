@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:39:14 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Fri Aug  5 17:12:27 2022
+# Process ID: 32480
+# Current directory: /home/crchen/yolo_hls4ml/custom_qkeras_combined_no_axi_rf/myproject_prj/solution1/impl/ip
+# Command line: vivado -notrace -mode batch -source run_ippack.tcl
+# Log file: /home/crchen/yolo_hls4ml/custom_qkeras_combined_no_axi_rf/myproject_prj/solution1/impl/ip/vivado.log
+# Journal file: /home/crchen/yolo_hls4ml/custom_qkeras_combined_no_axi_rf/myproject_prj/solution1/impl/ip/vivado.jou
+#-----------------------------------------------------------
+source run_ippack.tcl -notrace

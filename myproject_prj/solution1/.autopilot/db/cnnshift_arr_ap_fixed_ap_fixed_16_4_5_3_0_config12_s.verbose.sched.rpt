@@ -1,0 +1,762 @@
+
+
+================================================================
+== Vivado HLS Report for 'cnnshift_arr_ap_fixed_ap_fixed_16_4_5_3_0_config12_s'
+================================================================
+* Date:           Fri Aug  5 17:06:43 2022
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        myproject_prj
+* Solution:       solution1
+* Product family: kintexu
+* Target device:  xcku115-flvb2104-2-i
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 5.00 ns | 3.782 ns |   0.62 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+------+------+---------+
+    |  Latency (cycles) |   Latency (absolute)  |   Interval  | Pipeline|
+    |   min   |   max   |    min    |    max    |  min |  max |   Type  |
+    +---------+---------+-----------+-----------+------+------+---------+
+    |     2265|     2265| 11.325 us | 11.325 us |  2265|  2265|   none  |
+    +---------+---------+-----------+-----------+------+------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-----------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                 |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |    Loop Name    |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +-----------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- Loop 1         |      704|      704|        11|          -|          -|    64|    no    |
+        | + Loop 1.1      |        8|        8|         4|          -|          -|     2|    no    |
+        |- Loop 2         |     1168|     1168|       584|          -|          -|     2|    no    |
+        | + Loop 2.1      |      582|      582|       194|          -|          -|     3|    no    |
+        |  ++ Loop 2.1.1  |      192|      192|         3|          -|          -|    64|    no    |
+        |- Loop 3         |      390|      390|       130|          -|          -|     3|    no    |
+        | + Loop 3.1      |      128|      128|         2|          -|          -|    64|    no    |
+        +-----------------+---------+---------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 16
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 9 
+3 --> 4 
+4 --> 5 2 
+5 --> 6 7 
+6 --> 8 
+7 --> 8 
+8 --> 4 
+9 --> 10 14 
+10 --> 11 9 
+11 --> 12 10 
+12 --> 13 
+13 --> 11 
+14 --> 15 
+15 --> 16 14 
+16 --> 15 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 0.83>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%tmpinput_V = alloca [192 x i16], align 2" [firmware/nnet_utils/nnet_conv2d_stream.h:148]   --->   Operation 17 'alloca' 'tmpinput_V' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.77> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 576> <RAM>
+ST_1 : Operation 18 [1/1] (0.83ns)   --->   "br label %.preheader" [firmware/nnet_utils/nnet_conv2d_stream.h:151]   --->   Operation 18 'br' <Predicate = true> <Delay = 0.83>
+
+State 2 <SV = 1> <Delay = 1.77>
+ST_2 : Operation 19 [1/1] (0.00ns)   --->   "%i0_0 = phi i7 [ 0, %.preheader.preheader ], [ %i0, %.preheader.loopexit ]"   --->   Operation 19 'phi' 'i0_0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 20 [1/1] (0.81ns)   --->   "%icmp_ln151 = icmp eq i7 %i0_0, -64" [firmware/nnet_utils/nnet_conv2d_stream.h:151]   --->   Operation 20 'icmp' 'icmp_ln151' <Predicate = true> <Delay = 0.81> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.81> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 21 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 64, i64 64, i64 64)"   --->   Operation 21 'speclooptripcount' 'empty' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 22 [1/1] (1.20ns)   --->   "%i0 = add i7 %i0_0, 1" [firmware/nnet_utils/nnet_conv2d_stream.h:151]   --->   Operation 22 'add' 'i0' <Predicate = true> <Delay = 1.20> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.28> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 23 [1/1] (0.00ns)   --->   "br i1 %icmp_ln151, label %.preheader22.preheader, label %0" [firmware/nnet_utils/nnet_conv2d_stream.h:151]   --->   Operation 23 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 24 [1/1] (0.00ns)   --->   "%zext_ln153 = zext i7 %i0_0 to i64" [firmware/nnet_utils/nnet_conv2d_stream.h:153]   --->   Operation 24 'zext' 'zext_ln153' <Predicate = (!icmp_ln151)> <Delay = 0.00>
+ST_2 : Operation 25 [1/1] (0.00ns)   --->   "%data_V_addr = getelementptr [64 x i16]* %data_V, i64 0, i64 %zext_ln153" [firmware/nnet_utils/nnet_conv2d_stream.h:153]   --->   Operation 25 'getelementptr' 'data_V_addr' <Predicate = (!icmp_ln151)> <Delay = 0.00>
+ST_2 : Operation 26 [2/2] (1.77ns)   --->   "%data_V_load = load i16* %data_V_addr, align 2" [firmware/nnet_utils/nnet_conv2d_stream.h:153]   --->   Operation 26 'load' 'data_V_load' <Predicate = (!icmp_ln151)> <Delay = 1.77> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.77> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 576> <RAM>
+ST_2 : Operation 27 [1/1] (0.83ns)   --->   "br label %.preheader22" [firmware/nnet_utils/nnet_conv2d_stream.h:122->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 27 'br' <Predicate = (icmp_ln151)> <Delay = 0.83>
+
+State 3 <SV = 2> <Delay = 3.54>
+ST_3 : Operation 28 [1/1] (0.00ns)   --->   "%zext_ln203 = zext i7 %i0_0 to i9" [firmware/nnet_utils/nnet_conv2d_stream.h:153]   --->   Operation 28 'zext' 'zext_ln203' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 29 [1/1] (0.00ns)   --->   "%tmp = call i64 @_ssdm_op_BitConcatenate.i64.i57.i7(i57 1, i7 %i0_0)" [firmware/nnet_utils/nnet_conv2d_stream.h:153]   --->   Operation 29 'bitconcatenate' 'tmp' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 30 [1/1] (0.00ns)   --->   "%tmpinput_V_addr = getelementptr [192 x i16]* %tmpinput_V, i64 0, i64 %tmp" [firmware/nnet_utils/nnet_conv2d_stream.h:153]   --->   Operation 30 'getelementptr' 'tmpinput_V_addr' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 31 [1/2] (1.77ns)   --->   "%data_V_load = load i16* %data_V_addr, align 2" [firmware/nnet_utils/nnet_conv2d_stream.h:153]   --->   Operation 31 'load' 'data_V_load' <Predicate = true> <Delay = 1.77> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.77> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 576> <RAM>
+ST_3 : Operation 32 [1/1] (1.77ns)   --->   "store i16 %data_V_load, i16* %tmpinput_V_addr, align 2" [firmware/nnet_utils/nnet_conv2d_stream.h:153]   --->   Operation 32 'store' <Predicate = true> <Delay = 1.77> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.77> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 576> <RAM>
+ST_3 : Operation 33 [1/1] (0.00ns)   --->   "%trunc_ln114 = trunc i7 %i0_0 to i6" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 33 'trunc' 'trunc_ln114' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 34 [1/1] (0.83ns)   --->   "br label %1" [firmware/nnet_utils/nnet_conv2d_stream.h:154]   --->   Operation 34 'br' <Predicate = true> <Delay = 0.83>
+
+State 4 <SV = 3> <Delay = 3.05>
+ST_4 : Operation 35 [1/1] (0.00ns)   --->   "%i1_0 = phi i2 [ 1, %0 ], [ %i1, %branch0192 ]"   --->   Operation 35 'phi' 'i1_0' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 36 [1/1] (0.53ns)   --->   "%icmp_ln154 = icmp eq i2 %i1_0, -1" [firmware/nnet_utils/nnet_conv2d_stream.h:154]   --->   Operation 36 'icmp' 'icmp_ln154' <Predicate = true> <Delay = 0.53> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.81> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 37 [1/1] (0.00ns)   --->   "%empty_113 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 2, i64 2, i64 2)"   --->   Operation 37 'speclooptripcount' 'empty_113' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 38 [1/1] (0.00ns)   --->   "br i1 %icmp_ln154, label %.preheader.loopexit, label %2" [firmware/nnet_utils/nnet_conv2d_stream.h:154]   --->   Operation 38 'br' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 39 [1/1] (0.00ns) (grouped into LUT with out node add_ln156)   --->   "%xor_ln156 = xor i2 %i1_0, -1" [firmware/nnet_utils/nnet_conv2d_stream.h:156]   --->   Operation 39 'xor' 'xor_ln156' <Predicate = (!icmp_ln154)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.33> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 40 [1/1] (0.00ns) (grouped into LUT with out node add_ln156)   --->   "%tmp_19 = call i8 @_ssdm_op_BitConcatenate.i8.i2.i6(i2 %xor_ln156, i6 0)" [firmware/nnet_utils/nnet_conv2d_stream.h:156]   --->   Operation 40 'bitconcatenate' 'tmp_19' <Predicate = (!icmp_ln154)> <Delay = 0.00>
+ST_4 : Operation 41 [1/1] (0.00ns) (grouped into LUT with out node add_ln156)   --->   "%zext_ln156 = zext i8 %tmp_19 to i9" [firmware/nnet_utils/nnet_conv2d_stream.h:156]   --->   Operation 41 'zext' 'zext_ln156' <Predicate = (!icmp_ln154)> <Delay = 0.00>
+ST_4 : Operation 42 [1/1] (1.28ns) (out node of the LUT)   --->   "%add_ln156 = add i9 %zext_ln156, %zext_ln203" [firmware/nnet_utils/nnet_conv2d_stream.h:156]   --->   Operation 42 'add' 'add_ln156' <Predicate = (!icmp_ln154)> <Delay = 1.28> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.28> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 43 [1/1] (0.00ns)   --->   "%zext_ln156_4 = zext i9 %add_ln156 to i64" [firmware/nnet_utils/nnet_conv2d_stream.h:156]   --->   Operation 43 'zext' 'zext_ln156_4' <Predicate = (!icmp_ln154)> <Delay = 0.00>
+ST_4 : Operation 44 [1/1] (0.00ns)   --->   "%tmpinput_V_addr_14 = getelementptr [192 x i16]* %tmpinput_V, i64 0, i64 %zext_ln156_4" [firmware/nnet_utils/nnet_conv2d_stream.h:156]   --->   Operation 44 'getelementptr' 'tmpinput_V_addr_14' <Predicate = (!icmp_ln154)> <Delay = 0.00>
+ST_4 : Operation 45 [2/2] (1.77ns)   --->   "%tmp1_V = load i16* %tmpinput_V_addr_14, align 2" [firmware/nnet_utils/nnet_conv2d_stream.h:156]   --->   Operation 45 'load' 'tmp1_V' <Predicate = (!icmp_ln154)> <Delay = 1.77> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.77> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 576> <RAM>
+ST_4 : Operation 46 [1/1] (0.00ns)   --->   "br label %.preheader"   --->   Operation 46 'br' <Predicate = (icmp_ln154)> <Delay = 0.00>
+
+State 5 <SV = 4> <Delay = 1.77>
+ST_5 : Operation 47 [1/2] (1.77ns)   --->   "%tmp1_V = load i16* %tmpinput_V_addr_14, align 2" [firmware/nnet_utils/nnet_conv2d_stream.h:156]   --->   Operation 47 'load' 'tmp1_V' <Predicate = true> <Delay = 1.77> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.77> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 576> <RAM>
+ST_5 : Operation 48 [1/1] (0.00ns)   --->   "%trunc_ln157 = trunc i2 %i1_0 to i1" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 48 'trunc' 'trunc_ln157' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 49 [1/1] (0.00ns)   --->   "br i1 %trunc_ln157, label %branch0, label %branch1" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 49 'br' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 50 [1/1] (0.78ns)   --->   "switch i6 %trunc_ln114, label %branch127 [
+    i6 0, label %branch64
+    i6 1, label %branch65
+    i6 2, label %branch66
+    i6 3, label %branch67
+    i6 4, label %branch68
+    i6 5, label %branch69
+    i6 6, label %branch70
+    i6 7, label %branch71
+    i6 8, label %branch72
+    i6 9, label %branch73
+    i6 10, label %branch74
+    i6 11, label %branch75
+    i6 12, label %branch76
+    i6 13, label %branch77
+    i6 14, label %branch78
+    i6 15, label %branch79
+    i6 16, label %branch80
+    i6 17, label %branch81
+    i6 18, label %branch82
+    i6 19, label %branch83
+    i6 20, label %branch84
+    i6 21, label %branch85
+    i6 22, label %branch86
+    i6 23, label %branch87
+    i6 24, label %branch88
+    i6 25, label %branch89
+    i6 26, label %branch90
+    i6 27, label %branch91
+    i6 28, label %branch92
+    i6 29, label %branch93
+    i6 30, label %branch94
+    i6 31, label %branch95
+    i6 -32, label %branch96
+    i6 -31, label %branch97
+    i6 -30, label %branch98
+    i6 -29, label %branch99
+    i6 -28, label %branch100
+    i6 -27, label %branch101
+    i6 -26, label %branch102
+    i6 -25, label %branch103
+    i6 -24, label %branch104
+    i6 -23, label %branch105
+    i6 -22, label %branch106
+    i6 -21, label %branch107
+    i6 -20, label %branch108
+    i6 -19, label %branch109
+    i6 -18, label %branch110
+    i6 -17, label %branch111
+    i6 -16, label %branch112
+    i6 -15, label %branch113
+    i6 -14, label %branch114
+    i6 -13, label %branch115
+    i6 -12, label %branch116
+    i6 -11, label %branch117
+    i6 -10, label %branch118
+    i6 -9, label %branch119
+    i6 -8, label %branch120
+    i6 -7, label %branch121
+    i6 -6, label %branch122
+    i6 -5, label %branch123
+    i6 -4, label %branch124
+    i6 -3, label %branch125
+    i6 -2, label %branch126
+  ]" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 50 'switch' <Predicate = (!trunc_ln157)> <Delay = 0.78>
+ST_5 : Operation 51 [1/1] (0.78ns)   --->   "switch i6 %trunc_ln114, label %branch63 [
+    i6 0, label %branch0193
+    i6 1, label %branch1194
+    i6 2, label %branch2
+    i6 3, label %branch3
+    i6 4, label %branch4
+    i6 5, label %branch5
+    i6 6, label %branch6
+    i6 7, label %branch7
+    i6 8, label %branch8
+    i6 9, label %branch9
+    i6 10, label %branch10
+    i6 11, label %branch11
+    i6 12, label %branch12
+    i6 13, label %branch13
+    i6 14, label %branch14
+    i6 15, label %branch15
+    i6 16, label %branch16
+    i6 17, label %branch17
+    i6 18, label %branch18
+    i6 19, label %branch19
+    i6 20, label %branch20
+    i6 21, label %branch21
+    i6 22, label %branch22
+    i6 23, label %branch23
+    i6 24, label %branch24
+    i6 25, label %branch25
+    i6 26, label %branch26
+    i6 27, label %branch27
+    i6 28, label %branch28
+    i6 29, label %branch29
+    i6 30, label %branch30
+    i6 31, label %branch31
+    i6 -32, label %branch32
+    i6 -31, label %branch33
+    i6 -30, label %branch34
+    i6 -29, label %branch35
+    i6 -28, label %branch36
+    i6 -27, label %branch37
+    i6 -26, label %branch38
+    i6 -25, label %branch39
+    i6 -24, label %branch40
+    i6 -23, label %branch41
+    i6 -22, label %branch42
+    i6 -21, label %branch43
+    i6 -20, label %branch44
+    i6 -19, label %branch45
+    i6 -18, label %branch46
+    i6 -17, label %branch47
+    i6 -16, label %branch48
+    i6 -15, label %branch49
+    i6 -14, label %branch50
+    i6 -13, label %branch51
+    i6 -12, label %branch52
+    i6 -11, label %branch53
+    i6 -10, label %branch54
+    i6 -9, label %branch55
+    i6 -8, label %branch56
+    i6 -7, label %branch57
+    i6 -6, label %branch58
+    i6 -5, label %branch59
+    i6 -4, label %branch60
+    i6 -3, label %branch61
+    i6 -2, label %branch62
+  ]" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 51 'switch' <Predicate = (trunc_ln157)> <Delay = 0.78>
+
+State 6 <SV = 5> <Delay = 2.21>
+ST_6 : Operation 52 [1/1] (0.57ns)   --->   "%DataOut_V_352 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_62, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 52 'memshiftread' 'DataOut_V_352' <Predicate = (trunc_ln114 == 62)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 53 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 53 'br' <Predicate = (trunc_ln114 == 62)> <Delay = 2.21>
+ST_6 : Operation 54 [1/1] (0.57ns)   --->   "%DataOut_V_351 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_61, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 54 'memshiftread' 'DataOut_V_351' <Predicate = (trunc_ln114 == 61)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 55 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 55 'br' <Predicate = (trunc_ln114 == 61)> <Delay = 2.21>
+ST_6 : Operation 56 [1/1] (0.57ns)   --->   "%DataOut_V_350 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_60, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 56 'memshiftread' 'DataOut_V_350' <Predicate = (trunc_ln114 == 60)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 57 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 57 'br' <Predicate = (trunc_ln114 == 60)> <Delay = 2.21>
+ST_6 : Operation 58 [1/1] (0.57ns)   --->   "%DataOut_V_349 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_59, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 58 'memshiftread' 'DataOut_V_349' <Predicate = (trunc_ln114 == 59)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 59 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 59 'br' <Predicate = (trunc_ln114 == 59)> <Delay = 2.21>
+ST_6 : Operation 60 [1/1] (0.57ns)   --->   "%DataOut_V_348 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_58, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 60 'memshiftread' 'DataOut_V_348' <Predicate = (trunc_ln114 == 58)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 61 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 61 'br' <Predicate = (trunc_ln114 == 58)> <Delay = 2.21>
+ST_6 : Operation 62 [1/1] (0.57ns)   --->   "%DataOut_V_347 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_57, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 62 'memshiftread' 'DataOut_V_347' <Predicate = (trunc_ln114 == 57)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 63 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 63 'br' <Predicate = (trunc_ln114 == 57)> <Delay = 2.21>
+ST_6 : Operation 64 [1/1] (0.57ns)   --->   "%DataOut_V_346 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_56, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 64 'memshiftread' 'DataOut_V_346' <Predicate = (trunc_ln114 == 56)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 65 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 65 'br' <Predicate = (trunc_ln114 == 56)> <Delay = 2.21>
+ST_6 : Operation 66 [1/1] (0.57ns)   --->   "%DataOut_V_345 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_55, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 66 'memshiftread' 'DataOut_V_345' <Predicate = (trunc_ln114 == 55)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 67 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 67 'br' <Predicate = (trunc_ln114 == 55)> <Delay = 2.21>
+ST_6 : Operation 68 [1/1] (0.57ns)   --->   "%DataOut_V_344 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_54, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 68 'memshiftread' 'DataOut_V_344' <Predicate = (trunc_ln114 == 54)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 69 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 69 'br' <Predicate = (trunc_ln114 == 54)> <Delay = 2.21>
+ST_6 : Operation 70 [1/1] (0.57ns)   --->   "%DataOut_V_343 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_53, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 70 'memshiftread' 'DataOut_V_343' <Predicate = (trunc_ln114 == 53)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 71 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 71 'br' <Predicate = (trunc_ln114 == 53)> <Delay = 2.21>
+ST_6 : Operation 72 [1/1] (0.57ns)   --->   "%DataOut_V_342 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_52, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 72 'memshiftread' 'DataOut_V_342' <Predicate = (trunc_ln114 == 52)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 73 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 73 'br' <Predicate = (trunc_ln114 == 52)> <Delay = 2.21>
+ST_6 : Operation 74 [1/1] (0.57ns)   --->   "%DataOut_V_341 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_51, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 74 'memshiftread' 'DataOut_V_341' <Predicate = (trunc_ln114 == 51)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 75 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 75 'br' <Predicate = (trunc_ln114 == 51)> <Delay = 2.21>
+ST_6 : Operation 76 [1/1] (0.57ns)   --->   "%DataOut_V_340 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_50, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 76 'memshiftread' 'DataOut_V_340' <Predicate = (trunc_ln114 == 50)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 77 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 77 'br' <Predicate = (trunc_ln114 == 50)> <Delay = 2.21>
+ST_6 : Operation 78 [1/1] (0.57ns)   --->   "%DataOut_V_339 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_49, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 78 'memshiftread' 'DataOut_V_339' <Predicate = (trunc_ln114 == 49)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 79 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 79 'br' <Predicate = (trunc_ln114 == 49)> <Delay = 2.21>
+ST_6 : Operation 80 [1/1] (0.57ns)   --->   "%DataOut_V_338 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_48, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 80 'memshiftread' 'DataOut_V_338' <Predicate = (trunc_ln114 == 48)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 81 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 81 'br' <Predicate = (trunc_ln114 == 48)> <Delay = 2.21>
+ST_6 : Operation 82 [1/1] (0.57ns)   --->   "%DataOut_V_337 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_47, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 82 'memshiftread' 'DataOut_V_337' <Predicate = (trunc_ln114 == 47)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 83 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 83 'br' <Predicate = (trunc_ln114 == 47)> <Delay = 2.21>
+ST_6 : Operation 84 [1/1] (0.57ns)   --->   "%DataOut_V_336 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_46, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 84 'memshiftread' 'DataOut_V_336' <Predicate = (trunc_ln114 == 46)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 85 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 85 'br' <Predicate = (trunc_ln114 == 46)> <Delay = 2.21>
+ST_6 : Operation 86 [1/1] (0.57ns)   --->   "%DataOut_V_335 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_45, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 86 'memshiftread' 'DataOut_V_335' <Predicate = (trunc_ln114 == 45)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 87 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 87 'br' <Predicate = (trunc_ln114 == 45)> <Delay = 2.21>
+ST_6 : Operation 88 [1/1] (0.57ns)   --->   "%DataOut_V_334 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_44, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 88 'memshiftread' 'DataOut_V_334' <Predicate = (trunc_ln114 == 44)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 89 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 89 'br' <Predicate = (trunc_ln114 == 44)> <Delay = 2.21>
+ST_6 : Operation 90 [1/1] (0.57ns)   --->   "%DataOut_V_333 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_43, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 90 'memshiftread' 'DataOut_V_333' <Predicate = (trunc_ln114 == 43)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 91 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 91 'br' <Predicate = (trunc_ln114 == 43)> <Delay = 2.21>
+ST_6 : Operation 92 [1/1] (0.57ns)   --->   "%DataOut_V_332 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_42, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 92 'memshiftread' 'DataOut_V_332' <Predicate = (trunc_ln114 == 42)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 93 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 93 'br' <Predicate = (trunc_ln114 == 42)> <Delay = 2.21>
+ST_6 : Operation 94 [1/1] (0.57ns)   --->   "%DataOut_V_331 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_41, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 94 'memshiftread' 'DataOut_V_331' <Predicate = (trunc_ln114 == 41)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 95 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 95 'br' <Predicate = (trunc_ln114 == 41)> <Delay = 2.21>
+ST_6 : Operation 96 [1/1] (0.57ns)   --->   "%DataOut_V_330 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_40, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 96 'memshiftread' 'DataOut_V_330' <Predicate = (trunc_ln114 == 40)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 97 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 97 'br' <Predicate = (trunc_ln114 == 40)> <Delay = 2.21>
+ST_6 : Operation 98 [1/1] (0.57ns)   --->   "%DataOut_V_329 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_39, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 98 'memshiftread' 'DataOut_V_329' <Predicate = (trunc_ln114 == 39)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 99 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 99 'br' <Predicate = (trunc_ln114 == 39)> <Delay = 2.21>
+ST_6 : Operation 100 [1/1] (0.57ns)   --->   "%DataOut_V_328 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_38, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 100 'memshiftread' 'DataOut_V_328' <Predicate = (trunc_ln114 == 38)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 101 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 101 'br' <Predicate = (trunc_ln114 == 38)> <Delay = 2.21>
+ST_6 : Operation 102 [1/1] (0.57ns)   --->   "%DataOut_V_327 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_37, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 102 'memshiftread' 'DataOut_V_327' <Predicate = (trunc_ln114 == 37)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 103 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 103 'br' <Predicate = (trunc_ln114 == 37)> <Delay = 2.21>
+ST_6 : Operation 104 [1/1] (0.57ns)   --->   "%DataOut_V_326 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_36, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 104 'memshiftread' 'DataOut_V_326' <Predicate = (trunc_ln114 == 36)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 105 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 105 'br' <Predicate = (trunc_ln114 == 36)> <Delay = 2.21>
+ST_6 : Operation 106 [1/1] (0.57ns)   --->   "%DataOut_V_325 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_35, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 106 'memshiftread' 'DataOut_V_325' <Predicate = (trunc_ln114 == 35)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 107 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 107 'br' <Predicate = (trunc_ln114 == 35)> <Delay = 2.21>
+ST_6 : Operation 108 [1/1] (0.57ns)   --->   "%DataOut_V_324 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_34, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 108 'memshiftread' 'DataOut_V_324' <Predicate = (trunc_ln114 == 34)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 109 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 109 'br' <Predicate = (trunc_ln114 == 34)> <Delay = 2.21>
+ST_6 : Operation 110 [1/1] (0.57ns)   --->   "%DataOut_V_323 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_33, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 110 'memshiftread' 'DataOut_V_323' <Predicate = (trunc_ln114 == 33)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 111 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 111 'br' <Predicate = (trunc_ln114 == 33)> <Delay = 2.21>
+ST_6 : Operation 112 [1/1] (0.57ns)   --->   "%DataOut_V_322 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_32, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 112 'memshiftread' 'DataOut_V_322' <Predicate = (trunc_ln114 == 32)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 113 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 113 'br' <Predicate = (trunc_ln114 == 32)> <Delay = 2.21>
+ST_6 : Operation 114 [1/1] (0.57ns)   --->   "%DataOut_V_321 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_31, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 114 'memshiftread' 'DataOut_V_321' <Predicate = (trunc_ln114 == 31)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 115 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 115 'br' <Predicate = (trunc_ln114 == 31)> <Delay = 2.21>
+ST_6 : Operation 116 [1/1] (0.57ns)   --->   "%DataOut_V_320 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_30, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 116 'memshiftread' 'DataOut_V_320' <Predicate = (trunc_ln114 == 30)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 117 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 117 'br' <Predicate = (trunc_ln114 == 30)> <Delay = 2.21>
+ST_6 : Operation 118 [1/1] (0.57ns)   --->   "%DataOut_V_319 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_29, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 118 'memshiftread' 'DataOut_V_319' <Predicate = (trunc_ln114 == 29)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 119 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 119 'br' <Predicate = (trunc_ln114 == 29)> <Delay = 2.21>
+ST_6 : Operation 120 [1/1] (0.57ns)   --->   "%DataOut_V_318 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_28, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 120 'memshiftread' 'DataOut_V_318' <Predicate = (trunc_ln114 == 28)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 121 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 121 'br' <Predicate = (trunc_ln114 == 28)> <Delay = 2.21>
+ST_6 : Operation 122 [1/1] (0.57ns)   --->   "%DataOut_V_317 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_27, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 122 'memshiftread' 'DataOut_V_317' <Predicate = (trunc_ln114 == 27)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 123 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 123 'br' <Predicate = (trunc_ln114 == 27)> <Delay = 2.21>
+ST_6 : Operation 124 [1/1] (0.57ns)   --->   "%DataOut_V_316 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_26, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 124 'memshiftread' 'DataOut_V_316' <Predicate = (trunc_ln114 == 26)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 125 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 125 'br' <Predicate = (trunc_ln114 == 26)> <Delay = 2.21>
+ST_6 : Operation 126 [1/1] (0.57ns)   --->   "%DataOut_V_315 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_25, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 126 'memshiftread' 'DataOut_V_315' <Predicate = (trunc_ln114 == 25)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 127 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 127 'br' <Predicate = (trunc_ln114 == 25)> <Delay = 2.21>
+ST_6 : Operation 128 [1/1] (0.57ns)   --->   "%DataOut_V_314 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_24, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 128 'memshiftread' 'DataOut_V_314' <Predicate = (trunc_ln114 == 24)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 129 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 129 'br' <Predicate = (trunc_ln114 == 24)> <Delay = 2.21>
+ST_6 : Operation 130 [1/1] (0.57ns)   --->   "%DataOut_V_313 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_23, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 130 'memshiftread' 'DataOut_V_313' <Predicate = (trunc_ln114 == 23)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 131 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 131 'br' <Predicate = (trunc_ln114 == 23)> <Delay = 2.21>
+ST_6 : Operation 132 [1/1] (0.57ns)   --->   "%DataOut_V_312 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_22, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 132 'memshiftread' 'DataOut_V_312' <Predicate = (trunc_ln114 == 22)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 133 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 133 'br' <Predicate = (trunc_ln114 == 22)> <Delay = 2.21>
+ST_6 : Operation 134 [1/1] (0.57ns)   --->   "%DataOut_V_311 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_21, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 134 'memshiftread' 'DataOut_V_311' <Predicate = (trunc_ln114 == 21)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 135 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 135 'br' <Predicate = (trunc_ln114 == 21)> <Delay = 2.21>
+ST_6 : Operation 136 [1/1] (0.57ns)   --->   "%DataOut_V_310 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_20, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 136 'memshiftread' 'DataOut_V_310' <Predicate = (trunc_ln114 == 20)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 137 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 137 'br' <Predicate = (trunc_ln114 == 20)> <Delay = 2.21>
+ST_6 : Operation 138 [1/1] (0.57ns)   --->   "%DataOut_V_309 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_19, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 138 'memshiftread' 'DataOut_V_309' <Predicate = (trunc_ln114 == 19)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 139 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 139 'br' <Predicate = (trunc_ln114 == 19)> <Delay = 2.21>
+ST_6 : Operation 140 [1/1] (0.57ns)   --->   "%DataOut_V_308 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_18, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 140 'memshiftread' 'DataOut_V_308' <Predicate = (trunc_ln114 == 18)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 141 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 141 'br' <Predicate = (trunc_ln114 == 18)> <Delay = 2.21>
+ST_6 : Operation 142 [1/1] (0.57ns)   --->   "%DataOut_V_307 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_17, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 142 'memshiftread' 'DataOut_V_307' <Predicate = (trunc_ln114 == 17)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 143 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 143 'br' <Predicate = (trunc_ln114 == 17)> <Delay = 2.21>
+ST_6 : Operation 144 [1/1] (0.57ns)   --->   "%DataOut_V_306 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_16, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 144 'memshiftread' 'DataOut_V_306' <Predicate = (trunc_ln114 == 16)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 145 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 145 'br' <Predicate = (trunc_ln114 == 16)> <Delay = 2.21>
+ST_6 : Operation 146 [1/1] (0.57ns)   --->   "%DataOut_V_305 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_15, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 146 'memshiftread' 'DataOut_V_305' <Predicate = (trunc_ln114 == 15)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 147 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 147 'br' <Predicate = (trunc_ln114 == 15)> <Delay = 2.21>
+ST_6 : Operation 148 [1/1] (0.57ns)   --->   "%DataOut_V_304 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_14, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 148 'memshiftread' 'DataOut_V_304' <Predicate = (trunc_ln114 == 14)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 149 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 149 'br' <Predicate = (trunc_ln114 == 14)> <Delay = 2.21>
+ST_6 : Operation 150 [1/1] (0.57ns)   --->   "%DataOut_V_303 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_13, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 150 'memshiftread' 'DataOut_V_303' <Predicate = (trunc_ln114 == 13)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 151 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 151 'br' <Predicate = (trunc_ln114 == 13)> <Delay = 2.21>
+ST_6 : Operation 152 [1/1] (0.57ns)   --->   "%DataOut_V_302 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_12, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 152 'memshiftread' 'DataOut_V_302' <Predicate = (trunc_ln114 == 12)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 153 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 153 'br' <Predicate = (trunc_ln114 == 12)> <Delay = 2.21>
+ST_6 : Operation 154 [1/1] (0.57ns)   --->   "%DataOut_V_301 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_11, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 154 'memshiftread' 'DataOut_V_301' <Predicate = (trunc_ln114 == 11)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 155 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 155 'br' <Predicate = (trunc_ln114 == 11)> <Delay = 2.21>
+ST_6 : Operation 156 [1/1] (0.57ns)   --->   "%DataOut_V_300 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_10, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 156 'memshiftread' 'DataOut_V_300' <Predicate = (trunc_ln114 == 10)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 157 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 157 'br' <Predicate = (trunc_ln114 == 10)> <Delay = 2.21>
+ST_6 : Operation 158 [1/1] (0.57ns)   --->   "%DataOut_V_299 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_9, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 158 'memshiftread' 'DataOut_V_299' <Predicate = (trunc_ln114 == 9)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 159 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 159 'br' <Predicate = (trunc_ln114 == 9)> <Delay = 2.21>
+ST_6 : Operation 160 [1/1] (0.57ns)   --->   "%DataOut_V_298 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_8, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 160 'memshiftread' 'DataOut_V_298' <Predicate = (trunc_ln114 == 8)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 161 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 161 'br' <Predicate = (trunc_ln114 == 8)> <Delay = 2.21>
+ST_6 : Operation 162 [1/1] (0.57ns)   --->   "%DataOut_V_297 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_7, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 162 'memshiftread' 'DataOut_V_297' <Predicate = (trunc_ln114 == 7)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 163 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 163 'br' <Predicate = (trunc_ln114 == 7)> <Delay = 2.21>
+ST_6 : Operation 164 [1/1] (0.57ns)   --->   "%DataOut_V_296 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_6, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 164 'memshiftread' 'DataOut_V_296' <Predicate = (trunc_ln114 == 6)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 165 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 165 'br' <Predicate = (trunc_ln114 == 6)> <Delay = 2.21>
+ST_6 : Operation 166 [1/1] (0.57ns)   --->   "%DataOut_V_295 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_5, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 166 'memshiftread' 'DataOut_V_295' <Predicate = (trunc_ln114 == 5)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 167 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 167 'br' <Predicate = (trunc_ln114 == 5)> <Delay = 2.21>
+ST_6 : Operation 168 [1/1] (0.57ns)   --->   "%DataOut_V_294 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_4, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 168 'memshiftread' 'DataOut_V_294' <Predicate = (trunc_ln114 == 4)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 169 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 169 'br' <Predicate = (trunc_ln114 == 4)> <Delay = 2.21>
+ST_6 : Operation 170 [1/1] (0.57ns)   --->   "%DataOut_V_293 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_3, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 170 'memshiftread' 'DataOut_V_293' <Predicate = (trunc_ln114 == 3)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 171 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 171 'br' <Predicate = (trunc_ln114 == 3)> <Delay = 2.21>
+ST_6 : Operation 172 [1/1] (0.57ns)   --->   "%DataOut_V_292 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_2, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 172 'memshiftread' 'DataOut_V_292' <Predicate = (trunc_ln114 == 2)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 173 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 173 'br' <Predicate = (trunc_ln114 == 2)> <Delay = 2.21>
+ST_6 : Operation 174 [1/1] (0.57ns)   --->   "%DataOut_V_291 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_1, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 174 'memshiftread' 'DataOut_V_291' <Predicate = (trunc_ln114 == 1)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 175 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 175 'br' <Predicate = (trunc_ln114 == 1)> <Delay = 2.21>
+ST_6 : Operation 176 [1/1] (0.57ns)   --->   "%DataOut_V_290 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_0, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 176 'memshiftread' 'DataOut_V_290' <Predicate = (trunc_ln114 == 0)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 177 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 177 'br' <Predicate = (trunc_ln114 == 0)> <Delay = 2.21>
+ST_6 : Operation 178 [1/1] (0.57ns)   --->   "%DataOut_V_289 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_1194_63, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 178 'memshiftread' 'DataOut_V_289' <Predicate = (trunc_ln114 == 63)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_6 : Operation 179 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 179 'br' <Predicate = (trunc_ln114 == 63)> <Delay = 2.21>
+
+State 7 <SV = 5> <Delay = 2.21>
+ST_7 : Operation 180 [1/1] (0.57ns)   --->   "%DataOut_V_288 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_62, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 180 'memshiftread' 'DataOut_V_288' <Predicate = (trunc_ln114 == 62)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 181 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 181 'br' <Predicate = (trunc_ln114 == 62)> <Delay = 2.21>
+ST_7 : Operation 182 [1/1] (0.57ns)   --->   "%DataOut_V_287 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_61, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 182 'memshiftread' 'DataOut_V_287' <Predicate = (trunc_ln114 == 61)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 183 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 183 'br' <Predicate = (trunc_ln114 == 61)> <Delay = 2.21>
+ST_7 : Operation 184 [1/1] (0.57ns)   --->   "%DataOut_V_286 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_60, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 184 'memshiftread' 'DataOut_V_286' <Predicate = (trunc_ln114 == 60)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 185 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 185 'br' <Predicate = (trunc_ln114 == 60)> <Delay = 2.21>
+ST_7 : Operation 186 [1/1] (0.57ns)   --->   "%DataOut_V_285 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_59, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 186 'memshiftread' 'DataOut_V_285' <Predicate = (trunc_ln114 == 59)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 187 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 187 'br' <Predicate = (trunc_ln114 == 59)> <Delay = 2.21>
+ST_7 : Operation 188 [1/1] (0.57ns)   --->   "%DataOut_V_284 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_58, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 188 'memshiftread' 'DataOut_V_284' <Predicate = (trunc_ln114 == 58)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 189 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 189 'br' <Predicate = (trunc_ln114 == 58)> <Delay = 2.21>
+ST_7 : Operation 190 [1/1] (0.57ns)   --->   "%DataOut_V_283 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_57, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 190 'memshiftread' 'DataOut_V_283' <Predicate = (trunc_ln114 == 57)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 191 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 191 'br' <Predicate = (trunc_ln114 == 57)> <Delay = 2.21>
+ST_7 : Operation 192 [1/1] (0.57ns)   --->   "%DataOut_V_282 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_56, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 192 'memshiftread' 'DataOut_V_282' <Predicate = (trunc_ln114 == 56)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 193 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 193 'br' <Predicate = (trunc_ln114 == 56)> <Delay = 2.21>
+ST_7 : Operation 194 [1/1] (0.57ns)   --->   "%DataOut_V_281 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_55, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 194 'memshiftread' 'DataOut_V_281' <Predicate = (trunc_ln114 == 55)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 195 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 195 'br' <Predicate = (trunc_ln114 == 55)> <Delay = 2.21>
+ST_7 : Operation 196 [1/1] (0.57ns)   --->   "%DataOut_V_280 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_54, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 196 'memshiftread' 'DataOut_V_280' <Predicate = (trunc_ln114 == 54)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 197 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 197 'br' <Predicate = (trunc_ln114 == 54)> <Delay = 2.21>
+ST_7 : Operation 198 [1/1] (0.57ns)   --->   "%DataOut_V_279 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_53, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 198 'memshiftread' 'DataOut_V_279' <Predicate = (trunc_ln114 == 53)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 199 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 199 'br' <Predicate = (trunc_ln114 == 53)> <Delay = 2.21>
+ST_7 : Operation 200 [1/1] (0.57ns)   --->   "%DataOut_V_278 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_52, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 200 'memshiftread' 'DataOut_V_278' <Predicate = (trunc_ln114 == 52)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 201 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 201 'br' <Predicate = (trunc_ln114 == 52)> <Delay = 2.21>
+ST_7 : Operation 202 [1/1] (0.57ns)   --->   "%DataOut_V_277 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_51, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 202 'memshiftread' 'DataOut_V_277' <Predicate = (trunc_ln114 == 51)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 203 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 203 'br' <Predicate = (trunc_ln114 == 51)> <Delay = 2.21>
+ST_7 : Operation 204 [1/1] (0.57ns)   --->   "%DataOut_V_276 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_50, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 204 'memshiftread' 'DataOut_V_276' <Predicate = (trunc_ln114 == 50)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 205 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 205 'br' <Predicate = (trunc_ln114 == 50)> <Delay = 2.21>
+ST_7 : Operation 206 [1/1] (0.57ns)   --->   "%DataOut_V_275 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_49, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 206 'memshiftread' 'DataOut_V_275' <Predicate = (trunc_ln114 == 49)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 207 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 207 'br' <Predicate = (trunc_ln114 == 49)> <Delay = 2.21>
+ST_7 : Operation 208 [1/1] (0.57ns)   --->   "%DataOut_V_274 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_48, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 208 'memshiftread' 'DataOut_V_274' <Predicate = (trunc_ln114 == 48)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 209 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 209 'br' <Predicate = (trunc_ln114 == 48)> <Delay = 2.21>
+ST_7 : Operation 210 [1/1] (0.57ns)   --->   "%DataOut_V_273 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_47, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 210 'memshiftread' 'DataOut_V_273' <Predicate = (trunc_ln114 == 47)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 211 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 211 'br' <Predicate = (trunc_ln114 == 47)> <Delay = 2.21>
+ST_7 : Operation 212 [1/1] (0.57ns)   --->   "%DataOut_V_272 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_46, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 212 'memshiftread' 'DataOut_V_272' <Predicate = (trunc_ln114 == 46)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 213 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 213 'br' <Predicate = (trunc_ln114 == 46)> <Delay = 2.21>
+ST_7 : Operation 214 [1/1] (0.57ns)   --->   "%DataOut_V_271 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_45, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 214 'memshiftread' 'DataOut_V_271' <Predicate = (trunc_ln114 == 45)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 215 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 215 'br' <Predicate = (trunc_ln114 == 45)> <Delay = 2.21>
+ST_7 : Operation 216 [1/1] (0.57ns)   --->   "%DataOut_V_270 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_44, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 216 'memshiftread' 'DataOut_V_270' <Predicate = (trunc_ln114 == 44)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 217 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 217 'br' <Predicate = (trunc_ln114 == 44)> <Delay = 2.21>
+ST_7 : Operation 218 [1/1] (0.57ns)   --->   "%DataOut_V_269 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_43, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 218 'memshiftread' 'DataOut_V_269' <Predicate = (trunc_ln114 == 43)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 219 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 219 'br' <Predicate = (trunc_ln114 == 43)> <Delay = 2.21>
+ST_7 : Operation 220 [1/1] (0.57ns)   --->   "%DataOut_V_268 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_42, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 220 'memshiftread' 'DataOut_V_268' <Predicate = (trunc_ln114 == 42)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 221 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 221 'br' <Predicate = (trunc_ln114 == 42)> <Delay = 2.21>
+ST_7 : Operation 222 [1/1] (0.57ns)   --->   "%DataOut_V_267 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_41, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 222 'memshiftread' 'DataOut_V_267' <Predicate = (trunc_ln114 == 41)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 223 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 223 'br' <Predicate = (trunc_ln114 == 41)> <Delay = 2.21>
+ST_7 : Operation 224 [1/1] (0.57ns)   --->   "%DataOut_V_266 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_40, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 224 'memshiftread' 'DataOut_V_266' <Predicate = (trunc_ln114 == 40)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 225 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 225 'br' <Predicate = (trunc_ln114 == 40)> <Delay = 2.21>
+ST_7 : Operation 226 [1/1] (0.57ns)   --->   "%DataOut_V_265 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_39, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 226 'memshiftread' 'DataOut_V_265' <Predicate = (trunc_ln114 == 39)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 227 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 227 'br' <Predicate = (trunc_ln114 == 39)> <Delay = 2.21>
+ST_7 : Operation 228 [1/1] (0.57ns)   --->   "%DataOut_V_264 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_38, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 228 'memshiftread' 'DataOut_V_264' <Predicate = (trunc_ln114 == 38)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 229 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 229 'br' <Predicate = (trunc_ln114 == 38)> <Delay = 2.21>
+ST_7 : Operation 230 [1/1] (0.57ns)   --->   "%DataOut_V_263 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_37, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 230 'memshiftread' 'DataOut_V_263' <Predicate = (trunc_ln114 == 37)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 231 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 231 'br' <Predicate = (trunc_ln114 == 37)> <Delay = 2.21>
+ST_7 : Operation 232 [1/1] (0.57ns)   --->   "%DataOut_V_262 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_36, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 232 'memshiftread' 'DataOut_V_262' <Predicate = (trunc_ln114 == 36)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 233 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 233 'br' <Predicate = (trunc_ln114 == 36)> <Delay = 2.21>
+ST_7 : Operation 234 [1/1] (0.57ns)   --->   "%DataOut_V_261 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_35, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 234 'memshiftread' 'DataOut_V_261' <Predicate = (trunc_ln114 == 35)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 235 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 235 'br' <Predicate = (trunc_ln114 == 35)> <Delay = 2.21>
+ST_7 : Operation 236 [1/1] (0.57ns)   --->   "%DataOut_V_260 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_34, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 236 'memshiftread' 'DataOut_V_260' <Predicate = (trunc_ln114 == 34)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 237 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 237 'br' <Predicate = (trunc_ln114 == 34)> <Delay = 2.21>
+ST_7 : Operation 238 [1/1] (0.57ns)   --->   "%DataOut_V_259 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_33, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 238 'memshiftread' 'DataOut_V_259' <Predicate = (trunc_ln114 == 33)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 239 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 239 'br' <Predicate = (trunc_ln114 == 33)> <Delay = 2.21>
+ST_7 : Operation 240 [1/1] (0.57ns)   --->   "%DataOut_V_258 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_32, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 240 'memshiftread' 'DataOut_V_258' <Predicate = (trunc_ln114 == 32)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 241 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 241 'br' <Predicate = (trunc_ln114 == 32)> <Delay = 2.21>
+ST_7 : Operation 242 [1/1] (0.57ns)   --->   "%DataOut_V_257 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_31, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 242 'memshiftread' 'DataOut_V_257' <Predicate = (trunc_ln114 == 31)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 243 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 243 'br' <Predicate = (trunc_ln114 == 31)> <Delay = 2.21>
+ST_7 : Operation 244 [1/1] (0.57ns)   --->   "%DataOut_V_256 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_30, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 244 'memshiftread' 'DataOut_V_256' <Predicate = (trunc_ln114 == 30)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 245 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 245 'br' <Predicate = (trunc_ln114 == 30)> <Delay = 2.21>
+ST_7 : Operation 246 [1/1] (0.57ns)   --->   "%DataOut_V_255 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_29, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 246 'memshiftread' 'DataOut_V_255' <Predicate = (trunc_ln114 == 29)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 247 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 247 'br' <Predicate = (trunc_ln114 == 29)> <Delay = 2.21>
+ST_7 : Operation 248 [1/1] (0.57ns)   --->   "%DataOut_V_254 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_28, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 248 'memshiftread' 'DataOut_V_254' <Predicate = (trunc_ln114 == 28)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 249 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 249 'br' <Predicate = (trunc_ln114 == 28)> <Delay = 2.21>
+ST_7 : Operation 250 [1/1] (0.57ns)   --->   "%DataOut_V_253 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_27, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 250 'memshiftread' 'DataOut_V_253' <Predicate = (trunc_ln114 == 27)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 251 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 251 'br' <Predicate = (trunc_ln114 == 27)> <Delay = 2.21>
+ST_7 : Operation 252 [1/1] (0.57ns)   --->   "%DataOut_V_252 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_26, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 252 'memshiftread' 'DataOut_V_252' <Predicate = (trunc_ln114 == 26)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 253 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 253 'br' <Predicate = (trunc_ln114 == 26)> <Delay = 2.21>
+ST_7 : Operation 254 [1/1] (0.57ns)   --->   "%DataOut_V_251 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_25, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 254 'memshiftread' 'DataOut_V_251' <Predicate = (trunc_ln114 == 25)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 255 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 255 'br' <Predicate = (trunc_ln114 == 25)> <Delay = 2.21>
+ST_7 : Operation 256 [1/1] (0.57ns)   --->   "%DataOut_V_250 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_24, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 256 'memshiftread' 'DataOut_V_250' <Predicate = (trunc_ln114 == 24)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 257 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 257 'br' <Predicate = (trunc_ln114 == 24)> <Delay = 2.21>
+ST_7 : Operation 258 [1/1] (0.57ns)   --->   "%DataOut_V_249 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_23, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 258 'memshiftread' 'DataOut_V_249' <Predicate = (trunc_ln114 == 23)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 259 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 259 'br' <Predicate = (trunc_ln114 == 23)> <Delay = 2.21>
+ST_7 : Operation 260 [1/1] (0.57ns)   --->   "%DataOut_V_248 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_22, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 260 'memshiftread' 'DataOut_V_248' <Predicate = (trunc_ln114 == 22)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 261 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 261 'br' <Predicate = (trunc_ln114 == 22)> <Delay = 2.21>
+ST_7 : Operation 262 [1/1] (0.57ns)   --->   "%DataOut_V_247 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_21, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 262 'memshiftread' 'DataOut_V_247' <Predicate = (trunc_ln114 == 21)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 263 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 263 'br' <Predicate = (trunc_ln114 == 21)> <Delay = 2.21>
+ST_7 : Operation 264 [1/1] (0.57ns)   --->   "%DataOut_V_246 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_20, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 264 'memshiftread' 'DataOut_V_246' <Predicate = (trunc_ln114 == 20)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 265 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 265 'br' <Predicate = (trunc_ln114 == 20)> <Delay = 2.21>
+ST_7 : Operation 266 [1/1] (0.57ns)   --->   "%DataOut_V_245 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_19, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 266 'memshiftread' 'DataOut_V_245' <Predicate = (trunc_ln114 == 19)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 267 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 267 'br' <Predicate = (trunc_ln114 == 19)> <Delay = 2.21>
+ST_7 : Operation 268 [1/1] (0.57ns)   --->   "%DataOut_V_244 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_18, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 268 'memshiftread' 'DataOut_V_244' <Predicate = (trunc_ln114 == 18)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 269 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 269 'br' <Predicate = (trunc_ln114 == 18)> <Delay = 2.21>
+ST_7 : Operation 270 [1/1] (0.57ns)   --->   "%DataOut_V_243 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_17, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 270 'memshiftread' 'DataOut_V_243' <Predicate = (trunc_ln114 == 17)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 271 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 271 'br' <Predicate = (trunc_ln114 == 17)> <Delay = 2.21>
+ST_7 : Operation 272 [1/1] (0.57ns)   --->   "%DataOut_V_242 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_16, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 272 'memshiftread' 'DataOut_V_242' <Predicate = (trunc_ln114 == 16)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 273 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 273 'br' <Predicate = (trunc_ln114 == 16)> <Delay = 2.21>
+ST_7 : Operation 274 [1/1] (0.57ns)   --->   "%DataOut_V_241 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_15, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 274 'memshiftread' 'DataOut_V_241' <Predicate = (trunc_ln114 == 15)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 275 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 275 'br' <Predicate = (trunc_ln114 == 15)> <Delay = 2.21>
+ST_7 : Operation 276 [1/1] (0.57ns)   --->   "%DataOut_V_240 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_14, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 276 'memshiftread' 'DataOut_V_240' <Predicate = (trunc_ln114 == 14)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 277 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 277 'br' <Predicate = (trunc_ln114 == 14)> <Delay = 2.21>
+ST_7 : Operation 278 [1/1] (0.57ns)   --->   "%DataOut_V_239 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_13, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 278 'memshiftread' 'DataOut_V_239' <Predicate = (trunc_ln114 == 13)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 279 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 279 'br' <Predicate = (trunc_ln114 == 13)> <Delay = 2.21>
+ST_7 : Operation 280 [1/1] (0.57ns)   --->   "%DataOut_V_238 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_12, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 280 'memshiftread' 'DataOut_V_238' <Predicate = (trunc_ln114 == 12)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 281 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 281 'br' <Predicate = (trunc_ln114 == 12)> <Delay = 2.21>
+ST_7 : Operation 282 [1/1] (0.57ns)   --->   "%DataOut_V_237 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_11, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 282 'memshiftread' 'DataOut_V_237' <Predicate = (trunc_ln114 == 11)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 283 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 283 'br' <Predicate = (trunc_ln114 == 11)> <Delay = 2.21>
+ST_7 : Operation 284 [1/1] (0.57ns)   --->   "%DataOut_V_236 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_10, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 284 'memshiftread' 'DataOut_V_236' <Predicate = (trunc_ln114 == 10)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 285 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 285 'br' <Predicate = (trunc_ln114 == 10)> <Delay = 2.21>
+ST_7 : Operation 286 [1/1] (0.57ns)   --->   "%DataOut_V_235 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_9, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 286 'memshiftread' 'DataOut_V_235' <Predicate = (trunc_ln114 == 9)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 287 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 287 'br' <Predicate = (trunc_ln114 == 9)> <Delay = 2.21>
+ST_7 : Operation 288 [1/1] (0.57ns)   --->   "%DataOut_V_234 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_8, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 288 'memshiftread' 'DataOut_V_234' <Predicate = (trunc_ln114 == 8)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 289 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 289 'br' <Predicate = (trunc_ln114 == 8)> <Delay = 2.21>
+ST_7 : Operation 290 [1/1] (0.57ns)   --->   "%DataOut_V_233 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_7, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 290 'memshiftread' 'DataOut_V_233' <Predicate = (trunc_ln114 == 7)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 291 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 291 'br' <Predicate = (trunc_ln114 == 7)> <Delay = 2.21>
+ST_7 : Operation 292 [1/1] (0.57ns)   --->   "%DataOut_V_232 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_6, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 292 'memshiftread' 'DataOut_V_232' <Predicate = (trunc_ln114 == 6)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 293 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 293 'br' <Predicate = (trunc_ln114 == 6)> <Delay = 2.21>
+ST_7 : Operation 294 [1/1] (0.57ns)   --->   "%DataOut_V_231 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_5, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 294 'memshiftread' 'DataOut_V_231' <Predicate = (trunc_ln114 == 5)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 295 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 295 'br' <Predicate = (trunc_ln114 == 5)> <Delay = 2.21>
+ST_7 : Operation 296 [1/1] (0.57ns)   --->   "%DataOut_V_230 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_4, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 296 'memshiftread' 'DataOut_V_230' <Predicate = (trunc_ln114 == 4)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 297 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 297 'br' <Predicate = (trunc_ln114 == 4)> <Delay = 2.21>
+ST_7 : Operation 298 [1/1] (0.57ns)   --->   "%DataOut_V_229 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_3, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 298 'memshiftread' 'DataOut_V_229' <Predicate = (trunc_ln114 == 3)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 299 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 299 'br' <Predicate = (trunc_ln114 == 3)> <Delay = 2.21>
+ST_7 : Operation 300 [1/1] (0.57ns)   --->   "%DataOut_V_228 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_2, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 300 'memshiftread' 'DataOut_V_228' <Predicate = (trunc_ln114 == 2)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 301 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 301 'br' <Predicate = (trunc_ln114 == 2)> <Delay = 2.21>
+ST_7 : Operation 302 [1/1] (0.57ns)   --->   "%DataOut_V_227 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_1, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 302 'memshiftread' 'DataOut_V_227' <Predicate = (trunc_ln114 == 1)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 303 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 303 'br' <Predicate = (trunc_ln114 == 1)> <Delay = 2.21>
+ST_7 : Operation 304 [1/1] (0.57ns)   --->   "%DataOut_V_226 = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_0, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 304 'memshiftread' 'DataOut_V_226' <Predicate = (trunc_ln114 == 0)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 305 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 305 'br' <Predicate = (trunc_ln114 == 0)> <Delay = 2.21>
+ST_7 : Operation 306 [1/1] (0.57ns)   --->   "%DataOut_V = call i16 @"_ssdm_op_MemShiftRead.[15 x i16]P"(i16* getelementptr inbounds ([15 x i16]* @layer_in_row_Array_V_0_63, i64 0, i64 14), i16 %tmp1_V, i1 true)" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 306 'memshiftread' 'DataOut_V' <Predicate = (trunc_ln114 == 63)> <Delay = 0.57> <Core = "ShiftReg">   --->   Core 33 'ShiftReg' <Latency = 0> <II = 1> <Delay = 0.57> <Storage> <Opcode : 'memshiftread' 'load'> <Ports = 1> <Width = 16> <Depth = 15> <ShiftMem>
+ST_7 : Operation 307 [1/1] (2.21ns)   --->   "br label %branch0192" [firmware/nnet_utils/nnet_conv2d_stream.h:157]   --->   Operation 307 'br' <Predicate = (trunc_ln114 == 63)> <Delay = 2.21>
+
+State 8 <SV = 6> <Delay = 3.78>
+ST_8 : Operation 308 [1/1] (0.00ns)   --->   "%DataOut_V_0 = phi i16 [ %DataOut_V, %branch63 ], [ %DataOut_V_288, %branch62 ], [ %DataOut_V_287, %branch61 ], [ %DataOut_V_286, %branch60 ], [ %DataOut_V_285, %branch59 ], [ %DataOut_V_284, %branch58 ], [ %DataOut_V_283, %branch57 ], [ %DataOut_V_282, %branch56 ], [ %DataOut_V_281, %branch55 ], [ %DataOut_V_280, %branch54 ], [ %DataOut_V_279, %branch53 ], [ %DataOut_V_278, %branch52 ], [ %DataOut_V_277, %branch51 ], [ %DataOut_V_276, %branch50 ], [ %DataOut_V_275, %branch49 ], [ %DataOut_V_274, %branch48 ], [ %DataOut_V_273, %branch47 ], [ %DataOut_V_272, %branch46 ], [ %DataOut_V_271, %branch45 ], [ %DataOut_V_270, %branch44 ], [ %DataOut_V_269, %branch43 ], [ %DataOut_V_268, %branch42 ], [ %DataOut_V_267, %branch41 ], [ %DataOut_V_266, %branch40 ], [ %DataOut_V_265, %branch39 ], [ %DataOut_V_264, %branch38 ], [ %DataOut_V_263, %branch37 ], [ %DataOut_V_262, %branch36 ], [ %DataOut_V_261, %branch35 ], [ %DataOut_V_260, %branch34 ], [ %DataOut_V_259, %branch33 ], [ %DataOut_V_258, %branch32 ], [ %DataOut_V_257, %branch31 ], [ %DataOut_V_256, %branch30 ], [ %DataOut_V_255, %branch29 ], [ %DataOut_V_254, %branch28 ], [ %DataOut_V_253, %branch27 ], [ %DataOut_V_252, %branch26 ], [ %DataOut_V_251, %branch25 ], [ %DataOut_V_250, %branch24 ], [ %DataOut_V_249, %branch23 ], [ %DataOut_V_248, %branch22 ], [ %DataOut_V_247, %branch21 ], [ %DataOut_V_246, %branch20 ], [ %DataOut_V_245, %branch19 ], [ %DataOut_V_244, %branch18 ], [ %DataOut_V_243, %branch17 ], [ %DataOut_V_242, %branch16 ], [ %DataOut_V_241, %branch15 ], [ %DataOut_V_240, %branch14 ], [ %DataOut_V_239, %branch13 ], [ %DataOut_V_238, %branch12 ], [ %DataOut_V_237, %branch11 ], [ %DataOut_V_236, %branch10 ], [ %DataOut_V_235, %branch9 ], [ %DataOut_V_234, %branch8 ], [ %DataOut_V_233, %branch7 ], [ %DataOut_V_232, %branch6 ], [ %DataOut_V_231, %branch5 ], [ %DataOut_V_230, %branch4 ], [ %DataOut_V_229, %branch3 ], [ %DataOut_V_228, %branch2 ], [ %DataOut_V_227, %branch1194 ], [ %DataOut_V_226, %branch0193 ], [ %DataOut_V_289, %branch127 ], [ %DataOut_V_352, %branch126 ], [ %DataOut_V_351, %branch125 ], [ %DataOut_V_350, %branch124 ], [ %DataOut_V_349, %branch123 ], [ %DataOut_V_348, %branch122 ], [ %DataOut_V_347, %branch121 ], [ %DataOut_V_346, %branch120 ], [ %DataOut_V_345, %branch119 ], [ %DataOut_V_344, %branch118 ], [ %DataOut_V_343, %branch117 ], [ %DataOut_V_342, %branch116 ], [ %DataOut_V_341, %branch115 ], [ %DataOut_V_340, %branch114 ], [ %DataOut_V_339, %branch113 ], [ %DataOut_V_338, %branch112 ], [ %DataOut_V_337, %branch111 ], [ %DataOut_V_336, %branch110 ], [ %DataOut_V_335, %branch109 ], [ %DataOut_V_334, %branch108 ], [ %DataOut_V_333, %branch107 ], [ %DataOut_V_332, %branch106 ], [ %DataOut_V_331, %branch105 ], [ %DataOut_V_330, %branch104 ], [ %DataOut_V_329, %branch103 ], [ %DataOut_V_328, %branch102 ], [ %DataOut_V_327, %branch101 ], [ %DataOut_V_326, %branch100 ], [ %DataOut_V_325, %branch99 ], [ %DataOut_V_324, %branch98 ], [ %DataOut_V_323, %branch97 ], [ %DataOut_V_322, %branch96 ], [ %DataOut_V_321, %branch95 ], [ %DataOut_V_320, %branch94 ], [ %DataOut_V_319, %branch93 ], [ %DataOut_V_318, %branch92 ], [ %DataOut_V_317, %branch91 ], [ %DataOut_V_316, %branch90 ], [ %DataOut_V_315, %branch89 ], [ %DataOut_V_314, %branch88 ], [ %DataOut_V_313, %branch87 ], [ %DataOut_V_312, %branch86 ], [ %DataOut_V_311, %branch85 ], [ %DataOut_V_310, %branch84 ], [ %DataOut_V_309, %branch83 ], [ %DataOut_V_308, %branch82 ], [ %DataOut_V_307, %branch81 ], [ %DataOut_V_306, %branch80 ], [ %DataOut_V_305, %branch79 ], [ %DataOut_V_304, %branch78 ], [ %DataOut_V_303, %branch77 ], [ %DataOut_V_302, %branch76 ], [ %DataOut_V_301, %branch75 ], [ %DataOut_V_300, %branch74 ], [ %DataOut_V_299, %branch73 ], [ %DataOut_V_298, %branch72 ], [ %DataOut_V_297, %branch71 ], [ %DataOut_V_296, %branch70 ], [ %DataOut_V_295, %branch69 ], [ %DataOut_V_294, %branch68 ], [ %DataOut_V_293, %branch67 ], [ %DataOut_V_292, %branch66 ], [ %DataOut_V_291, %branch65 ], [ %DataOut_V_290, %branch64 ]"   --->   Operation 308 'phi' 'DataOut_V_0' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 309 [1/1] (0.72ns)   --->   "%sub_ln158 = sub i2 -2, %i1_0" [firmware/nnet_utils/nnet_conv2d_stream.h:158]   --->   Operation 309 'sub' 'sub_ln158' <Predicate = true> <Delay = 0.72> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.28> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 310 [1/1] (0.00ns)   --->   "%tmp_21 = call i8 @_ssdm_op_BitConcatenate.i8.i2.i6(i2 %sub_ln158, i6 0)" [firmware/nnet_utils/nnet_conv2d_stream.h:158]   --->   Operation 310 'bitconcatenate' 'tmp_21' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 311 [1/1] (0.00ns)   --->   "%zext_ln203_18 = zext i8 %tmp_21 to i9" [firmware/nnet_utils/nnet_conv2d_stream.h:158]   --->   Operation 311 'zext' 'zext_ln203_18' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 312 [1/1] (1.28ns)   --->   "%add_ln203 = add i9 %zext_ln203, %zext_ln203_18" [firmware/nnet_utils/nnet_conv2d_stream.h:158]   --->   Operation 312 'add' 'add_ln203' <Predicate = true> <Delay = 1.28> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.28> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 313 [1/1] (0.00ns)   --->   "%zext_ln203_19 = zext i9 %add_ln203 to i64" [firmware/nnet_utils/nnet_conv2d_stream.h:158]   --->   Operation 313 'zext' 'zext_ln203_19' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 314 [1/1] (0.00ns)   --->   "%tmpinput_V_addr_16 = getelementptr [192 x i16]* %tmpinput_V, i64 0, i64 %zext_ln203_19" [firmware/nnet_utils/nnet_conv2d_stream.h:158]   --->   Operation 314 'getelementptr' 'tmpinput_V_addr_16' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 315 [1/1] (1.77ns)   --->   "store i16 %DataOut_V_0, i16* %tmpinput_V_addr_16, align 2" [firmware/nnet_utils/nnet_conv2d_stream.h:158]   --->   Operation 315 'store' <Predicate = true> <Delay = 1.77> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.77> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 576> <RAM>
+ST_8 : Operation 316 [1/1] (0.72ns)   --->   "%i1 = add i2 %i1_0, 1" [firmware/nnet_utils/nnet_conv2d_stream.h:154]   --->   Operation 316 'add' 'i1' <Predicate = true> <Delay = 0.72> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.28> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 317 [1/1] (0.00ns)   --->   "br label %1" [firmware/nnet_utils/nnet_conv2d_stream.h:154]   --->   Operation 317 'br' <Predicate = true> <Delay = 0.00>
+
+State 9 <SV = 2> <Delay = 1.28>
+ST_9 : Operation 318 [1/1] (0.00ns)   --->   "%i0_0_i = phi i2 [ %i0_4, %.preheader22.loopexit ], [ 0, %.preheader22.preheader ]"   --->   Operation 318 'phi' 'i0_0_i' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 319 [1/1] (0.53ns)   --->   "%icmp_ln122 = icmp eq i2 %i0_0_i, -2" [firmware/nnet_utils/nnet_conv2d_stream.h:122->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 319 'icmp' 'icmp_ln122' <Predicate = true> <Delay = 0.53> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.81> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 320 [1/1] (0.00ns)   --->   "%empty_114 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 2, i64 2, i64 2)"   --->   Operation 320 'speclooptripcount' 'empty_114' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 321 [1/1] (0.72ns)   --->   "%i0_4 = add i2 %i0_0_i, 1" [firmware/nnet_utils/nnet_conv2d_stream.h:122->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 321 'add' 'i0_4' <Predicate = true> <Delay = 0.72> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.28> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 322 [1/1] (0.00ns)   --->   "br i1 %icmp_ln122, label %.preheader21.preheader, label %.preheader5.preheader.i" [firmware/nnet_utils/nnet_conv2d_stream.h:122->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 322 'br' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 323 [1/1] (0.00ns)   --->   "%trunc_ln126 = trunc i2 %i0_0_i to i1" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 323 'trunc' 'trunc_ln126' <Predicate = (!icmp_ln122)> <Delay = 0.00>
+ST_9 : Operation 324 [1/1] (0.00ns)   --->   "%shl_ln = call i7 @_ssdm_op_BitConcatenate.i7.i1.i6(i1 %trunc_ln126, i6 0)" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 324 'bitconcatenate' 'shl_ln' <Predicate = (!icmp_ln122)> <Delay = 0.00>
+ST_9 : Operation 325 [1/1] (0.00ns)   --->   "%zext_ln126_17 = zext i7 %shl_ln to i8" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 325 'zext' 'zext_ln126_17' <Predicate = (!icmp_ln122)> <Delay = 0.00>
+ST_9 : Operation 326 [1/1] (1.28ns)   --->   "%add_ln126 = add i8 64, %zext_ln126_17" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 326 'add' 'add_ln126' <Predicate = (!icmp_ln122)> <Delay = 1.28> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.28> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 327 [1/1] (0.83ns)   --->   "br label %.preheader5.i" [firmware/nnet_utils/nnet_conv2d_stream.h:124->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 327 'br' <Predicate = (!icmp_ln122)> <Delay = 0.83>
+ST_9 : Operation 328 [1/1] (0.83ns)   --->   "br label %.preheader21" [firmware/nnet_utils/nnet_conv2d_stream.h:131->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 328 'br' <Predicate = (icmp_ln122)> <Delay = 0.83>
+
+State 10 <SV = 3> <Delay = 1.31>
+ST_10 : Operation 329 [1/1] (0.00ns)   --->   "%i1_0_i = phi i2 [ 0, %.preheader5.preheader.i ], [ %i1_8, %.preheader5.i.loopexit ]"   --->   Operation 329 'phi' 'i1_0_i' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 330 [1/1] (0.53ns)   --->   "%icmp_ln124 = icmp eq i2 %i1_0_i, -1" [firmware/nnet_utils/nnet_conv2d_stream.h:124->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 330 'icmp' 'icmp_ln124' <Predicate = true> <Delay = 0.53> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.81> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 331 [1/1] (0.00ns)   --->   "%empty_115 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 3, i64 3, i64 3)"   --->   Operation 331 'speclooptripcount' 'empty_115' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 332 [1/1] (0.72ns)   --->   "%i1_8 = add i2 %i1_0_i, 1" [firmware/nnet_utils/nnet_conv2d_stream.h:124->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 332 'add' 'i1_8' <Predicate = true> <Delay = 0.72> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.28> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 333 [1/1] (0.00ns)   --->   "br i1 %icmp_ln124, label %.preheader22.loopexit, label %.preheader4.preheader.i" [firmware/nnet_utils/nnet_conv2d_stream.h:124->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 333 'br' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 334 [1/1] (0.00ns)   --->   "%shl_ln126_5 = call i10 @_ssdm_op_BitConcatenate.i10.i2.i8(i2 %i1_0_i, i8 0)" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 334 'bitconcatenate' 'shl_ln126_5' <Predicate = (!icmp_ln124)> <Delay = 0.00>
+ST_10 : Operation 335 [1/1] (0.00ns)   --->   "%zext_ln126_18 = zext i10 %shl_ln126_5 to i11" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 335 'zext' 'zext_ln126_18' <Predicate = (!icmp_ln124)> <Delay = 0.00>
+ST_10 : Operation 336 [1/1] (0.00ns)   --->   "%shl_ln126_6 = call i8 @_ssdm_op_BitConcatenate.i8.i2.i6(i2 %i1_0_i, i6 0)" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 336 'bitconcatenate' 'shl_ln126_6' <Predicate = (!icmp_ln124)> <Delay = 0.00>
+ST_10 : Operation 337 [1/1] (0.00ns)   --->   "%zext_ln126_19 = zext i8 %shl_ln126_6 to i11" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 337 'zext' 'zext_ln126_19' <Predicate = (!icmp_ln124)> <Delay = 0.00>
+ST_10 : Operation 338 [1/1] (1.31ns)   --->   "%sub_ln126 = sub i11 %zext_ln126_18, %zext_ln126_19" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 338 'sub' 'sub_ln126' <Predicate = (!icmp_ln124)> <Delay = 1.31> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.28> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 339 [1/1] (0.83ns)   --->   "br label %.preheader4.i" [firmware/nnet_utils/nnet_conv2d_stream.h:125->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 339 'br' <Predicate = (!icmp_ln124)> <Delay = 0.83>
+ST_10 : Operation 340 [1/1] (0.00ns)   --->   "br label %.preheader22"   --->   Operation 340 'br' <Predicate = (icmp_ln124)> <Delay = 0.00>
+
+State 11 <SV = 4> <Delay = 2.62>
+ST_11 : Operation 341 [1/1] (0.00ns)   --->   "%i2_0_i = phi i7 [ %i2_4, %3 ], [ 0, %.preheader4.preheader.i ]"   --->   Operation 341 'phi' 'i2_0_i' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 342 [1/1] (0.00ns)   --->   "%zext_ln125 = zext i7 %i2_0_i to i8" [firmware/nnet_utils/nnet_conv2d_stream.h:125->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 342 'zext' 'zext_ln125' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 343 [1/1] (0.81ns)   --->   "%icmp_ln125 = icmp eq i7 %i2_0_i, -64" [firmware/nnet_utils/nnet_conv2d_stream.h:125->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 343 'icmp' 'icmp_ln125' <Predicate = true> <Delay = 0.81> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.81> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 344 [1/1] (0.00ns)   --->   "%empty_116 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 64, i64 64, i64 64)"   --->   Operation 344 'speclooptripcount' 'empty_116' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 345 [1/1] (1.20ns)   --->   "%i2_4 = add i7 %i2_0_i, 1" [firmware/nnet_utils/nnet_conv2d_stream.h:125->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 345 'add' 'i2_4' <Predicate = true> <Delay = 1.20> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.28> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 346 [1/1] (0.00ns)   --->   "br i1 %icmp_ln125, label %.preheader5.i.loopexit, label %3" [firmware/nnet_utils/nnet_conv2d_stream.h:125->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 346 'br' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 347 [1/1] (1.20ns)   --->   "%add_ln126_13 = add i8 %zext_ln126_17, %zext_ln125" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 347 'add' 'add_ln126_13' <Predicate = (!icmp_ln125)> <Delay = 1.20> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.28> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 348 [1/1] (0.00ns)   --->   "%zext_ln126_20 = zext i8 %add_ln126_13 to i11" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 348 'zext' 'zext_ln126_20' <Predicate = (!icmp_ln125)> <Delay = 0.00>
+ST_11 : Operation 349 [1/1] (1.33ns)   --->   "%add_ln126_14 = add i11 %zext_ln126_20, %sub_ln126" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 349 'add' 'add_ln126_14' <Predicate = (!icmp_ln125)> <Delay = 1.33> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.28> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 350 [1/1] (1.28ns)   --->   "%add_ln126_15 = add i8 %add_ln126, %zext_ln125" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 350 'add' 'add_ln126_15' <Predicate = (!icmp_ln125)> <Delay = 1.28> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.28> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 351 [1/1] (0.00ns)   --->   "%zext_ln126_21 = zext i8 %add_ln126_15 to i11" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 351 'zext' 'zext_ln126_21' <Predicate = (!icmp_ln125)> <Delay = 0.00>
+ST_11 : Operation 352 [1/1] (1.33ns)   --->   "%add_ln126_16 = add i11 %zext_ln126_21, %sub_ln126" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 352 'add' 'add_ln126_16' <Predicate = (!icmp_ln125)> <Delay = 1.33> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.28> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 353 [1/1] (0.00ns)   --->   "br label %.preheader5.i"   --->   Operation 353 'br' <Predicate = (icmp_ln125)> <Delay = 0.00>
+
+State 12 <SV = 5> <Delay = 1.77>
+ST_12 : Operation 354 [1/1] (0.00ns)   --->   "%sext_ln126_4 = sext i11 %add_ln126_16 to i32" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 354 'sext' 'sext_ln126_4' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 355 [1/1] (0.00ns)   --->   "%zext_ln126_6 = zext i32 %sext_ln126_4 to i64" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 355 'zext' 'zext_ln126_6' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 356 [1/1] (0.00ns)   --->   "%output_V_addr = getelementptr [576 x i16]* %output_V, i64 0, i64 %zext_ln126_6" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 356 'getelementptr' 'output_V_addr' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 357 [2/2] (1.77ns)   --->   "%output_V_load = load i16* %output_V_addr, align 2" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 357 'load' 'output_V_load' <Predicate = true> <Delay = 1.77> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.77> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 576> <RAM>
+
+State 13 <SV = 6> <Delay = 3.54>
+ST_13 : Operation 358 [1/1] (0.00ns)   --->   "%sext_ln126 = sext i11 %add_ln126_14 to i32" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 358 'sext' 'sext_ln126' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 359 [1/1] (0.00ns)   --->   "%zext_ln126 = zext i32 %sext_ln126 to i64" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 359 'zext' 'zext_ln126' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 360 [1/2] (1.77ns)   --->   "%output_V_load = load i16* %output_V_addr, align 2" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 360 'load' 'output_V_load' <Predicate = true> <Delay = 1.77> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.77> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 576> <RAM>
+ST_13 : Operation 361 [1/1] (0.00ns)   --->   "%output_V_addr_7 = getelementptr [576 x i16]* %output_V, i64 0, i64 %zext_ln126" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 361 'getelementptr' 'output_V_addr_7' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 362 [1/1] (1.77ns)   --->   "store i16 %output_V_load, i16* %output_V_addr_7, align 2" [firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 362 'store' <Predicate = true> <Delay = 1.77> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.77> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 576> <RAM>
+ST_13 : Operation 363 [1/1] (0.00ns)   --->   "br label %.preheader4.i" [firmware/nnet_utils/nnet_conv2d_stream.h:125->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 363 'br' <Predicate = true> <Delay = 0.00>
+
+State 14 <SV = 3> <Delay = 1.31>
+ST_14 : Operation 364 [1/1] (0.00ns)   --->   "%i11_0_i = phi i2 [ %i1_7, %.preheader21.loopexit ], [ 0, %.preheader21.preheader ]"   --->   Operation 364 'phi' 'i11_0_i' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 365 [1/1] (0.53ns)   --->   "%icmp_ln131 = icmp eq i2 %i11_0_i, -1" [firmware/nnet_utils/nnet_conv2d_stream.h:131->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 365 'icmp' 'icmp_ln131' <Predicate = true> <Delay = 0.53> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.81> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 366 [1/1] (0.00ns)   --->   "%empty_117 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 3, i64 3, i64 3)"   --->   Operation 366 'speclooptripcount' 'empty_117' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 367 [1/1] (0.72ns)   --->   "%i1_7 = add i2 %i11_0_i, 1" [firmware/nnet_utils/nnet_conv2d_stream.h:131->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 367 'add' 'i1_7' <Predicate = true> <Delay = 0.72> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.28> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 368 [1/1] (0.00ns)   --->   "br i1 %icmp_ln131, label %"shift_right_small<ap_fixed<16, 4, 5, 3, 0>, ap_fixed<16, 4, 5, 3, 0>, config12>.exit", label %.preheader.preheader.i" [firmware/nnet_utils/nnet_conv2d_stream.h:131->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 368 'br' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 369 [1/1] (0.00ns)   --->   "%shl_ln5 = call i10 @_ssdm_op_BitConcatenate.i10.i2.i8(i2 %i11_0_i, i8 0)" [firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 369 'bitconcatenate' 'shl_ln5' <Predicate = (!icmp_ln131)> <Delay = 0.00>
+ST_14 : Operation 370 [1/1] (0.00ns)   --->   "%shl_ln134_3 = call i8 @_ssdm_op_BitConcatenate.i8.i2.i6(i2 %i11_0_i, i6 0)" [firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 370 'bitconcatenate' 'shl_ln134_3' <Predicate = (!icmp_ln131)> <Delay = 0.00>
+ST_14 : Operation 371 [1/1] (0.00ns)   --->   "%zext_ln134_8 = zext i8 %shl_ln134_3 to i10" [firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 371 'zext' 'zext_ln134_8' <Predicate = (!icmp_ln131)> <Delay = 0.00>
+ST_14 : Operation 372 [1/1] (1.31ns)   --->   "%sub_ln134 = sub i10 %shl_ln5, %zext_ln134_8" [firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 372 'sub' 'sub_ln134' <Predicate = (!icmp_ln131)> <Delay = 1.31> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.28> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 373 [1/1] (0.00ns)   --->   "%zext_ln133 = zext i8 %shl_ln134_3 to i9" [firmware/nnet_utils/nnet_conv2d_stream.h:133->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 373 'zext' 'zext_ln133' <Predicate = (!icmp_ln131)> <Delay = 0.00>
+ST_14 : Operation 374 [1/1] (0.83ns)   --->   "br label %.preheader.i" [firmware/nnet_utils/nnet_conv2d_stream.h:133->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 374 'br' <Predicate = (!icmp_ln131)> <Delay = 0.83>
+ST_14 : Operation 375 [1/1] (0.00ns)   --->   "ret void" [firmware/nnet_utils/nnet_conv2d_stream.h:162]   --->   Operation 375 'ret' <Predicate = (icmp_ln131)> <Delay = 0.00>
+
+State 15 <SV = 4> <Delay = 3.05>
+ST_15 : Operation 376 [1/1] (0.00ns)   --->   "%i22_0_i = phi i7 [ %i2, %4 ], [ 0, %.preheader.preheader.i ]"   --->   Operation 376 'phi' 'i22_0_i' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 377 [1/1] (0.81ns)   --->   "%icmp_ln133 = icmp eq i7 %i22_0_i, -64" [firmware/nnet_utils/nnet_conv2d_stream.h:133->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 377 'icmp' 'icmp_ln133' <Predicate = true> <Delay = 0.81> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 0.81> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 378 [1/1] (0.00ns)   --->   "%empty_118 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 64, i64 64, i64 64)"   --->   Operation 378 'speclooptripcount' 'empty_118' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 379 [1/1] (1.20ns)   --->   "%i2 = add i7 %i22_0_i, 1" [firmware/nnet_utils/nnet_conv2d_stream.h:133->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 379 'add' 'i2' <Predicate = true> <Delay = 1.20> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.28> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 380 [1/1] (0.00ns)   --->   "br i1 %icmp_ln133, label %.preheader21.loopexit, label %4" [firmware/nnet_utils/nnet_conv2d_stream.h:133->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 380 'br' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 381 [1/1] (0.00ns)   --->   "%or_ln = call i8 @_ssdm_op_BitConcatenate.i8.i1.i7(i1 true, i7 %i22_0_i)" [firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 381 'bitconcatenate' 'or_ln' <Predicate = (!icmp_ln133)> <Delay = 0.00>
+ST_15 : Operation 382 [1/1] (0.00ns)   --->   "%zext_ln134_9 = zext i8 %or_ln to i10" [firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 382 'zext' 'zext_ln134_9' <Predicate = (!icmp_ln133)> <Delay = 0.00>
+ST_15 : Operation 383 [1/1] (1.31ns)   --->   "%add_ln134 = add i10 %sub_ln134, %zext_ln134_9" [firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 383 'add' 'add_ln134' <Predicate = (!icmp_ln133)> <Delay = 1.31> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.28> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 384 [1/1] (0.00ns)   --->   "%zext_ln203_20 = zext i7 %i22_0_i to i9" [firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 384 'zext' 'zext_ln203_20' <Predicate = (!icmp_ln133)> <Delay = 0.00>
+ST_15 : Operation 385 [1/1] (1.28ns)   --->   "%add_ln203_5 = add i9 %zext_ln133, %zext_ln203_20" [firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 385 'add' 'add_ln203_5' <Predicate = (!icmp_ln133)> <Delay = 1.28> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.28> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 386 [1/1] (0.00ns)   --->   "%zext_ln203_21 = zext i9 %add_ln203_5 to i64" [firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 386 'zext' 'zext_ln203_21' <Predicate = (!icmp_ln133)> <Delay = 0.00>
+ST_15 : Operation 387 [1/1] (0.00ns)   --->   "%tmpinput_V_addr_15 = getelementptr [192 x i16]* %tmpinput_V, i64 0, i64 %zext_ln203_21" [firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 387 'getelementptr' 'tmpinput_V_addr_15' <Predicate = (!icmp_ln133)> <Delay = 0.00>
+ST_15 : Operation 388 [2/2] (1.77ns)   --->   "%tmpinput_V_load = load i16* %tmpinput_V_addr_15, align 2" [firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 388 'load' 'tmpinput_V_load' <Predicate = (!icmp_ln133)> <Delay = 1.77> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.77> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 576> <RAM>
+ST_15 : Operation 389 [1/1] (0.00ns)   --->   "br label %.preheader21"   --->   Operation 389 'br' <Predicate = (icmp_ln133)> <Delay = 0.00>
+
+State 16 <SV = 5> <Delay = 3.54>
+ST_16 : Operation 390 [1/1] (0.00ns)   --->   "%zext_ln134 = zext i10 %add_ln134 to i64" [firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 390 'zext' 'zext_ln134' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 391 [1/2] (1.77ns)   --->   "%tmpinput_V_load = load i16* %tmpinput_V_addr_15, align 2" [firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 391 'load' 'tmpinput_V_load' <Predicate = true> <Delay = 1.77> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.77> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 576> <RAM>
+ST_16 : Operation 392 [1/1] (0.00ns)   --->   "%output_V_addr11 = getelementptr [576 x i16]* %output_V, i64 0, i64 %zext_ln134" [firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 392 'getelementptr' 'output_V_addr11' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 393 [1/1] (1.77ns)   --->   "store i16 %tmpinput_V_load, i16* %output_V_addr11, align 2" [firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 393 'store' <Predicate = true> <Delay = 1.77> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 1.77> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 576> <RAM>
+ST_16 : Operation 394 [1/1] (0.00ns)   --->   "br label %.preheader.i" [firmware/nnet_utils/nnet_conv2d_stream.h:133->firmware/nnet_utils/nnet_conv2d_stream.h:161]   --->   Operation 394 'br' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 5ns, clock uncertainty: 0.625ns.
+
+ <State 1>: 0.835ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('i0') with incoming values : ('i0', firmware/nnet_utils/nnet_conv2d_stream.h:151) [6]  (0.835 ns)
+
+ <State 2>: 1.77ns
+The critical path consists of the following:
+	'phi' operation ('i0') with incoming values : ('i0', firmware/nnet_utils/nnet_conv2d_stream.h:151) [6]  (0 ns)
+	'getelementptr' operation ('data_V_addr', firmware/nnet_utils/nnet_conv2d_stream.h:153) [16]  (0 ns)
+	'load' operation ('data_V_load', firmware/nnet_utils/nnet_conv2d_stream.h:153) on array 'data_V' [17]  (1.77 ns)
+
+ <State 3>: 3.54ns
+The critical path consists of the following:
+	'load' operation ('data_V_load', firmware/nnet_utils/nnet_conv2d_stream.h:153) on array 'data_V' [17]  (1.77 ns)
+	'store' operation ('store_ln153', firmware/nnet_utils/nnet_conv2d_stream.h:153) of variable 'data_V_load', firmware/nnet_utils/nnet_conv2d_stream.h:153 on array 'tmpinput.V', firmware/nnet_utils/nnet_conv2d_stream.h:148 [18]  (1.77 ns)
+
+ <State 4>: 3.06ns
+The critical path consists of the following:
+	'phi' operation ('i1') with incoming values : ('i1', firmware/nnet_utils/nnet_conv2d_stream.h:154) [22]  (0 ns)
+	'xor' operation ('xor_ln156', firmware/nnet_utils/nnet_conv2d_stream.h:156) [27]  (0 ns)
+	'add' operation ('add_ln156', firmware/nnet_utils/nnet_conv2d_stream.h:156) [30]  (1.28 ns)
+	'getelementptr' operation ('tmpinput_V_addr_14', firmware/nnet_utils/nnet_conv2d_stream.h:156) [32]  (0 ns)
+	'load' operation ('tmp1.V', firmware/nnet_utils/nnet_conv2d_stream.h:156) on array 'tmpinput.V', firmware/nnet_utils/nnet_conv2d_stream.h:148 [33]  (1.77 ns)
+
+ <State 5>: 1.77ns
+The critical path consists of the following:
+	'load' operation ('tmp1.V', firmware/nnet_utils/nnet_conv2d_stream.h:156) on array 'tmpinput.V', firmware/nnet_utils/nnet_conv2d_stream.h:148 [33]  (1.77 ns)
+
+ <State 6>: 2.21ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('DataOut.V') with incoming values : ('DataOut.V', firmware/nnet_utils/nnet_conv2d_stream.h:157) [425]  (2.21 ns)
+
+ <State 7>: 2.21ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('DataOut.V') with incoming values : ('DataOut.V', firmware/nnet_utils/nnet_conv2d_stream.h:157) [425]  (2.21 ns)
+
+ <State 8>: 3.78ns
+The critical path consists of the following:
+	'sub' operation ('sub_ln158', firmware/nnet_utils/nnet_conv2d_stream.h:158) [426]  (0.726 ns)
+	'add' operation ('add_ln203', firmware/nnet_utils/nnet_conv2d_stream.h:158) [429]  (1.28 ns)
+	'getelementptr' operation ('tmpinput_V_addr_16', firmware/nnet_utils/nnet_conv2d_stream.h:158) [431]  (0 ns)
+	'store' operation ('store_ln158', firmware/nnet_utils/nnet_conv2d_stream.h:158) of variable 'DataOut.V' on array 'tmpinput.V', firmware/nnet_utils/nnet_conv2d_stream.h:148 [432]  (1.77 ns)
+
+ <State 9>: 1.28ns
+The critical path consists of the following:
+	'phi' operation ('i0') with incoming values : ('i0', firmware/nnet_utils/nnet_conv2d_stream.h:122->firmware/nnet_utils/nnet_conv2d_stream.h:161) [440]  (0 ns)
+	'add' operation ('add_ln126', firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161) [449]  (1.28 ns)
+
+ <State 10>: 1.32ns
+The critical path consists of the following:
+	'phi' operation ('i1') with incoming values : ('i1', firmware/nnet_utils/nnet_conv2d_stream.h:124->firmware/nnet_utils/nnet_conv2d_stream.h:161) [452]  (0 ns)
+	'sub' operation ('sub_ln126', firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161) [462]  (1.32 ns)
+
+ <State 11>: 2.62ns
+The critical path consists of the following:
+	'phi' operation ('i2') with incoming values : ('i2', firmware/nnet_utils/nnet_conv2d_stream.h:125->firmware/nnet_utils/nnet_conv2d_stream.h:161) [465]  (0 ns)
+	'add' operation ('add_ln126_15', firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161) [477]  (1.28 ns)
+	'add' operation ('add_ln126_16', firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161) [479]  (1.34 ns)
+
+ <State 12>: 1.77ns
+The critical path consists of the following:
+	'getelementptr' operation ('output_V_addr', firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161) [482]  (0 ns)
+	'load' operation ('output_V_load', firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161) on array 'output_V' [483]  (1.77 ns)
+
+ <State 13>: 3.54ns
+The critical path consists of the following:
+	'load' operation ('output_V_load', firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161) on array 'output_V' [483]  (1.77 ns)
+	'store' operation ('store_ln126', firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161) of variable 'output_V_load', firmware/nnet_utils/nnet_conv2d_stream.h:126->firmware/nnet_utils/nnet_conv2d_stream.h:161 on array 'output_V' [485]  (1.77 ns)
+
+ <State 14>: 1.32ns
+The critical path consists of the following:
+	'phi' operation ('i1') with incoming values : ('i1', firmware/nnet_utils/nnet_conv2d_stream.h:131->firmware/nnet_utils/nnet_conv2d_stream.h:161) [494]  (0 ns)
+	'sub' operation ('sub_ln134', firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161) [503]  (1.32 ns)
+
+ <State 15>: 3.06ns
+The critical path consists of the following:
+	'phi' operation ('i2') with incoming values : ('i2', firmware/nnet_utils/nnet_conv2d_stream.h:133->firmware/nnet_utils/nnet_conv2d_stream.h:161) [507]  (0 ns)
+	'add' operation ('add_ln203_5', firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161) [518]  (1.28 ns)
+	'getelementptr' operation ('tmpinput_V_addr_15', firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161) [520]  (0 ns)
+	'load' operation ('tmpinput_V_load', firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161) on array 'tmpinput.V', firmware/nnet_utils/nnet_conv2d_stream.h:148 [521]  (1.77 ns)
+
+ <State 16>: 3.54ns
+The critical path consists of the following:
+	'load' operation ('tmpinput_V_load', firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161) on array 'tmpinput.V', firmware/nnet_utils/nnet_conv2d_stream.h:148 [521]  (1.77 ns)
+	'store' operation ('store_ln134', firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161) of variable 'tmpinput_V_load', firmware/nnet_utils/nnet_conv2d_stream.h:134->firmware/nnet_utils/nnet_conv2d_stream.h:161 on array 'output_V' [523]  (1.77 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A
