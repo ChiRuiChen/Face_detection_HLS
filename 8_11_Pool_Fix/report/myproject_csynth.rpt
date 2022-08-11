@@ -1,0 +1,175 @@
+
+
+================================================================
+== Vivado HLS Report for 'myproject'
+================================================================
+* Date:           Thu Aug 11 23:25:14 2022
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        myproject_prj
+* Solution:       solution1
+* Product family: virtexuplus
+* Target device:  xcu250-figd2104-2L-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 5.00 ns | 4.299 ns |   0.62 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+---------+---------+----------+
+    |  Latency (cycles) |   Latency (absolute)  |      Interval     | Pipeline |
+    |   min   |   max   |    min    |    max    |   min   |   max   |   Type   |
+    +---------+---------+-----------+-----------+---------+---------+----------+
+    |  5044318|  5422174| 25.222 ms | 27.111 ms |  5011458|  5389314| dataflow |
+    +---------+---------+-----------+-----------+---------+---------+----------+
+
+    + Detail: 
+        * Instance: 
+        +---------------------------------------------------------+--------------------------------------------------------+---------+---------+-----------+-----------+---------+---------+---------+
+        |                                                         |                                                        |  Latency (cycles) |   Latency (absolute)  |      Interval     | Pipeline|
+        |                         Instance                        |                         Module                         |   min   |   max   |    min    |    max    |   min   |   max   |   Type  |
+        +---------------------------------------------------------+--------------------------------------------------------+---------+---------+-----------+-----------+---------+---------+---------+
+        |conv_2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config12_U0   |conv_2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config12_s   |  1216351|  1382176|  6.082 ms |  6.911 ms |  1216351|  1382176|   none  |
+        |conv_2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config9_U0    |conv_2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config9_s    |   859487|   989248|  4.297 ms |  4.946 ms |   859487|   989248|   none  |
+        |conv_2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config5_U0    |conv_2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config5_s    |  5011457|  5389313| 25.057 ms | 26.947 ms |  5011457|  5389313|   none  |
+        |conv_2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config2_U0    |conv_2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config2_s    |   589561|   714409|  2.948 ms |  3.572 ms |   589561|   714409|   none  |
+        |pooling2d_cl_ss_ap_fixed_ap_fixed_config15_U0            |pooling2d_cl_ss_ap_fixed_ap_fixed_config15_s            |    11126|    11126| 55.630 us | 55.630 us |    11126|    11126|   none  |
+        |pooling2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config8_U0  |pooling2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config8_s  |    30421|    30421|  0.152 ms |  0.152 ms |    30421|    30421|   none  |
+        |dense_ss_ap_fixed_ap_fixed_16_4_5_3_0_config17_U0        |dense_ss_ap_fixed_ap_fixed_16_4_5_3_0_config17_s        |    11526|    11526| 57.630 us | 57.630 us |    11526|    11526|   none  |
+        |zeropad2d_cl_ss_ap_fixed_ap_fixed_config21_U0            |zeropad2d_cl_ss_ap_fixed_ap_fixed_config21_s            |     9358|     9358| 46.790 us | 46.790 us |     9358|     9358|   none  |
+        |zeropad2d_cl_ss_ap_fixed_ap_fixed_config20_U0            |zeropad2d_cl_ss_ap_fixed_ap_fixed_config20_s            |     3697|     3697| 18.485 us | 18.485 us |     3697|     3697|   none  |
+        |sigmoid_ss_ap_fixed_ap_fixed_sigmoid_config19_U0         |sigmoid_ss_ap_fixed_ap_fixed_sigmoid_config19_s         |       10|       10| 50.000 ns | 50.000 ns |       10|       10|   none  |
+        |relu_ss_ap_fixed_ap_fixed_16_4_5_3_0_relu_config4_U0     |relu_ss_ap_fixed_ap_fixed_16_4_5_3_0_relu_config4_s     |    32770|    32770|  0.164 ms |  0.164 ms |    32770|    32770|   none  |
+        |relu_ss_ap_fixed_ap_fixed_16_4_5_3_0_relu_config7_U0     |relu_ss_ap_fixed_ap_fixed_16_4_5_3_0_relu_config7_s     |    28802|    28802|  0.144 ms |  0.144 ms |    28802|    28802|   none  |
+        |relu_ss_ap_fixed_ap_fixed_16_4_5_3_0_relu_config11_U0    |relu_ss_ap_fixed_ap_fixed_16_4_5_3_0_relu_config11_s    |    14402|    14402| 72.010 us | 72.010 us |    14402|    14402|   none  |
+        |relu_ss_ap_fixed_ap_fixed_16_4_5_3_0_relu_config14_U0    |relu_ss_ap_fixed_ap_fixed_16_4_5_3_0_relu_config14_s    |    10818|    10818| 54.090 us | 54.090 us |    10818|    10818|   none  |
+        +---------------------------------------------------------+--------------------------------------------------------+---------+---------+-----------+-----------+---------+---------+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+-------+---------+---------+------+
+|         Name        | BRAM_18K| DSP48E|    FF   |   LUT   | URAM |
++---------------------+---------+-------+---------+---------+------+
+|DSP                  |        -|      -|        -|        -|     -|
+|Expression           |        -|      -|        0|        2|     -|
+|FIFO                 |        0|      -|       65|      364|     -|
+|Instance             |      132|    197|     7982|    17768|     0|
+|Memory               |        -|      -|        -|        -|     -|
+|Multiplexer          |        -|      -|        -|        -|     -|
+|Register             |        -|      -|        -|        -|     -|
++---------------------+---------+-------+---------+---------+------+
+|Total                |      132|    197|     8047|    18134|     0|
++---------------------+---------+-------+---------+---------+------+
+|Available SLR        |     1344|   3072|   864000|   432000|   320|
++---------------------+---------+-------+---------+---------+------+
+|Utilization SLR (%)  |        9|      6|    ~0   |        4|     0|
++---------------------+---------+-------+---------+---------+------+
+|Available            |     5376|  12288|  3456000|  1728000|  1280|
++---------------------+---------+-------+---------+---------+------+
+|Utilization (%)      |        2|      1|    ~0   |        1|     0|
++---------------------+---------+-------+---------+---------+------+
+
++ Detail: 
+    * Instance: 
+    +---------------------------------------------------------+--------------------------------------------------------+---------+-------+------+------+-----+
+    |                         Instance                        |                         Module                         | BRAM_18K| DSP48E|  FF  |  LUT | URAM|
+    +---------------------------------------------------------+--------------------------------------------------------+---------+-------+------+------+-----+
+    |conv_2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config12_U0   |conv_2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config12_s   |       41|     64|  1707|  3586|    0|
+    |conv_2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config2_U0    |conv_2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config2_s    |        7|     32|  2382|  2718|    0|
+    |conv_2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config5_U0    |conv_2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config5_s    |       41|     32|  1292|  2627|    0|
+    |conv_2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config9_U0    |conv_2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config9_s    |       31|     64|  1728|  3594|    0|
+    |dense_ss_ap_fixed_ap_fixed_16_4_5_3_0_config17_U0        |dense_ss_ap_fixed_ap_fixed_16_4_5_3_0_config17_s        |        6|      5|   236|   288|    0|
+    |pooling2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config8_U0  |pooling2d_cl_ss_ap_fixed_ap_fixed_16_4_5_3_0_config8_s  |        2|      0|   136|  1190|    0|
+    |pooling2d_cl_ss_ap_fixed_ap_fixed_config15_U0            |pooling2d_cl_ss_ap_fixed_ap_fixed_config15_s            |        3|      0|   163|  2169|    0|
+    |relu_ss_ap_fixed_ap_fixed_16_4_5_3_0_relu_config11_U0    |relu_ss_ap_fixed_ap_fixed_16_4_5_3_0_relu_config11_s    |        0|      0|    22|   146|    0|
+    |relu_ss_ap_fixed_ap_fixed_16_4_5_3_0_relu_config14_U0    |relu_ss_ap_fixed_ap_fixed_16_4_5_3_0_relu_config14_s    |        0|      0|    22|   146|    0|
+    |relu_ss_ap_fixed_ap_fixed_16_4_5_3_0_relu_config4_U0     |relu_ss_ap_fixed_ap_fixed_16_4_5_3_0_relu_config4_s     |        0|      0|    24|   155|    0|
+    |relu_ss_ap_fixed_ap_fixed_16_4_5_3_0_relu_config7_U0     |relu_ss_ap_fixed_ap_fixed_16_4_5_3_0_relu_config7_s     |        0|      0|    23|   147|    0|
+    |sigmoid_ss_ap_fixed_ap_fixed_sigmoid_config19_U0         |sigmoid_ss_ap_fixed_ap_fixed_sigmoid_config19_s         |        1|      0|    87|   234|    0|
+    |zeropad2d_cl_ss_ap_fixed_ap_fixed_config20_U0            |zeropad2d_cl_ss_ap_fixed_ap_fixed_config20_s            |        0|      0|    82|   373|    0|
+    |zeropad2d_cl_ss_ap_fixed_ap_fixed_config21_U0            |zeropad2d_cl_ss_ap_fixed_ap_fixed_config21_s            |        0|      0|    78|   395|    0|
+    +---------------------------------------------------------+--------------------------------------------------------+---------+-------+------+------+-----+
+    |Total                                                    |                                                        |      132|    197|  7982| 17768|    0|
+    +---------------------------------------------------------+--------------------------------------------------------+---------+-------+------+------+-----+
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    +-------------------+---------+---+----+-----+------+-----+---------+
+    |        Name       | BRAM_18K| FF| LUT| URAM| Depth| Bits| Size:D*B|
+    +-------------------+---------+---+----+-----+------+-----+---------+
+    |layer11_out_V_V_U  |        0|  5|   0|    -|     1|   16|       16|
+    |layer12_out_V_V_U  |        0|  5|   0|    -|     1|   16|       16|
+    |layer14_out_V_V_U  |        0|  5|   0|    -|     1|   16|       16|
+    |layer15_out_V_V_U  |        0|  5|   0|    -|     1|   16|       16|
+    |layer17_out_V_V_U  |        0|  5|   0|    -|     1|   16|       16|
+    |layer20_out_V_V_U  |        0|  5|   0|    -|     1|   16|       16|
+    |layer21_out_V_V_U  |        0|  5|   0|    -|     1|   16|       16|
+    |layer2_out_V_V_U   |        0|  5|   0|    -|     1|   16|       16|
+    |layer4_out_V_V_U   |        0|  5|   0|    -|     1|   16|       16|
+    |layer5_out_V_V_U   |        0|  5|   0|    -|     1|   16|       16|
+    |layer7_out_V_V_U   |        0|  5|   0|    -|     1|   16|       16|
+    |layer8_out_V_V_U   |        0|  5|   0|    -|     1|   16|       16|
+    |layer9_out_V_V_U   |        0|  5|   0|    -|     1|   16|       16|
+    +-------------------+---------+---+----+-----+------+-----+---------+
+    |Total              |        0| 65|   0|    0|    13|  208|      208|
+    +-------------------+---------+---+----+-----+------+-----+---------+
+
+    * Expression: 
+    +--------------+----------+-------+---+----+------------+------------+
+    | Variable Name| Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +--------------+----------+-------+---+----+------------+------------+
+    |ap_idle       |    and   |      0|  0|   2|           1|           1|
+    +--------------+----------+-------+---+----+------------+------------+
+    |Total         |          |      0|  0|   2|           1|           1|
+    +--------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    N/A
+
+    * Register: 
+    N/A
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------------------+-----+-----+------------+------------------+--------------+
+|        RTL Ports        | Dir | Bits|  Protocol  |   Source Object  |    C Type    |
++-------------------------+-----+-----+------------+------------------+--------------+
+|conv2d_input_V_V_TDATA   |  in |   16|    axis    | conv2d_input_V_V |    pointer   |
+|conv2d_input_V_V_TVALID  |  in |    1|    axis    | conv2d_input_V_V |    pointer   |
+|conv2d_input_V_V_TREADY  | out |    1|    axis    | conv2d_input_V_V |    pointer   |
+|layer19_out_V_V_TDATA    | out |   16|    axis    |  layer19_out_V_V |    pointer   |
+|layer19_out_V_V_TVALID   | out |    1|    axis    |  layer19_out_V_V |    pointer   |
+|layer19_out_V_V_TREADY   |  in |    1|    axis    |  layer19_out_V_V |    pointer   |
+|ap_clk                   |  in |    1| ap_ctrl_hs |     myproject    | return value |
+|ap_rst_n                 |  in |    1| ap_ctrl_hs |     myproject    | return value |
+|ap_start                 |  in |    1| ap_ctrl_hs |     myproject    | return value |
+|ap_done                  | out |    1| ap_ctrl_hs |     myproject    | return value |
+|ap_ready                 | out |    1| ap_ctrl_hs |     myproject    | return value |
+|ap_idle                  | out |    1| ap_ctrl_hs |     myproject    | return value |
++-------------------------+-----+-----+------------+------------------+--------------+
+
